@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Infix, Prefix, dan Postfix &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>Sorting &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materi/infix-prefix-postfix';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materi/sorting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sorting" href="sorting.html" />
-    <link rel="prev" title="Stack &amp; Queue" href="stack-queue.html" />
+    <link rel="next" title="Hashing" href="hashing.html" />
+    <link rel="prev" title="Infix, Prefix, dan Postfix" href="infix-prefix-postfix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -171,14 +171,14 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Materi</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="stack-queue.html">1. Stack &amp; Queue</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Infix, Prefix, dan Postfix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infix-prefix-postfix.html">Infix, Prefix, dan Postfix</a></li>
 
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="sorting.html">Sorting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sorting</a></li>
 
 
 
@@ -257,7 +257,7 @@
       
       
       
-      <li><a href="../_sources/materi/infix-prefix-postfix.md" target="_blank"
+      <li><a href="../_sources/materi/sorting.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +333,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Infix, Prefix, dan Postfix</h1>
+    <h1>Sorting</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,19 +343,26 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Infix, Prefix, dan Postfix</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d2-konversi-infix-ke-prefix">D2. Konversi Infix ke Prefix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-langkah-a-b-c-a-b-c">Contoh langkah: (A + B) * C → <strong>* + A B C</strong></a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sorting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-sorting-pengurutan-data">Algoritma Sorting (Pengurutan Data)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-bubble-sort">E. BUBBLE SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-selection-sort">F. SELECTION SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-insertion-sort">G. INSERTION SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-tabel-perbandingan-semua-sorting">📊 BONUS: Tabel Perbandingan Semua Sorting</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-infix-ke-postfix-prefix">KONVERSI INFIX KE POSTFIX &amp; PREFIX</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-bubble-sort">1. KUMPULAN FUNGSI BUBBLE SORT</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-semua-soal">UJI COBA SEMUA SOAL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-selection-sort">2. KUMPULAN FUNGSI SELECTION SORT</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-insertion-sort">3. KUMPULAN FUNGSI INSERTION SORT</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">UJI COBA KODE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">==========================================</a></li>
 </ul>
 
             </nav>
@@ -368,129 +375,317 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="infix-prefix-dan-postfix">
-<h1>Infix, Prefix, dan Postfix<a class="headerlink" href="#infix-prefix-dan-postfix" title="Link to this heading">#</a></h1>
-<section id="d2-konversi-infix-ke-prefix">
-<h2>D2. Konversi Infix ke Prefix<a class="headerlink" href="#d2-konversi-infix-ke-prefix" title="Link to this heading">#</a></h2>
-<p><strong>Cara:</strong> Balik string → ganti kurung → konversi ke postfix → balik hasil</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sorting">
+<h1>Sorting<a class="headerlink" href="#sorting" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="algoritma-sorting-pengurutan-data">
+<h1>Algoritma Sorting (Pengurutan Data)<a class="headerlink" href="#algoritma-sorting-pengurutan-data" title="Link to this heading">#</a></h1>
+<section id="e-bubble-sort">
+<h2>E. BUBBLE SORT<a class="headerlink" href="#e-bubble-sort" title="Link to this heading">#</a></h2>
+<p><strong>Konsep Dasar:</strong> Membandingkan dua elemen yang berdekatan. Jika elemen kiri lebih besar dari elemen kanan, maka posisinya ditukar. Proses ini diulang terus sampai tidak ada lagi elemen yang perlu ditukar. Elemen terbesar akan “menggelembung” ke posisi paling kanan di setiap iterasinya.</p>
+<ul class="simple">
+<li><p><strong>Time Complexity:</strong> O(n²) worst case, O(n) best case (jika ditambah optimasi <em>early exit</em>).</p></li>
+<li><p><strong>Space Complexity:</strong> O(1) (In-place sorting).</p></li>
+<li><p><strong>Sifat:</strong> Stabil (<em>Stable</em>).</p></li>
+</ul>
+<p><strong>Tracing Bubble Sort (Contoh Data: [64, 34, 25, 12, 22, 11, 90]):</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Infix</p></th>
-<th class="head"><p>Prefix</p></th>
+<tr class="row-odd"><th class="head"><p>Pass</p></th>
+<th class="head"><p>Hasil Setelah Pass</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>A + B</p></td>
-<td><p><strong>+ A B</strong></p></td>
+<tr class="row-even"><td><p>Pass 1</p></td>
+<td><p>[34, 25, 12, 22, 11, 64, 90]</p></td>
 </tr>
-<tr class="row-odd"><td><p>A + B * C</p></td>
-<td><p><strong>+ A * B C</strong></p></td>
+<tr class="row-odd"><td><p>Pass 2</p></td>
+<td><p>[25, 12, 22, 11, 34, 64, 90]</p></td>
 </tr>
-<tr class="row-even"><td><p>(A + B) * C</p></td>
-<td><p><strong>* + A B C</strong></p></td>
+<tr class="row-even"><td><p>Pass 3</p></td>
+<td><p>[12, 22, 11, 25, 34, 64, 90]</p></td>
 </tr>
-<tr class="row-odd"><td><p>A * (B + C)</p></td>
-<td><p><strong>* A + B C</strong></p></td>
+<tr class="row-odd"><td><p>Pass 4</p></td>
+<td><p>[12, 11, 22, 25, 34, 64, 90]</p></td>
 </tr>
-<tr class="row-even"><td><p>(A - B) / (C + D)</p></td>
-<td><p><strong>/ - A B + C D</strong></p></td>
+<tr class="row-even"><td><p>Pass 5</p></td>
+<td><p>[11, 12, 22, 25, 34, 64, 90]</p></td>
 </tr>
-</tbody>
-</table>
-</div>
-<section id="contoh-langkah-a-b-c-a-b-c">
-<h3>Contoh langkah: (A + B) * C → <strong>* + A B C</strong><a class="headerlink" href="#contoh-langkah-a-b-c-a-b-c" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Langkah</p></th>
-<th class="head"><p>Proses</p></th>
-<th class="head"><p>Hasil</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1. Balik infix</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(A+B)*C</span></code> → <code class="docutils literal notranslate"><span class="pre">C*)B+A(</span></code></p></td>
-<td><p>C * ) B + A (</p></td>
-</tr>
-<tr class="row-odd"><td><p>2. Ganti kurung</p></td>
-<td><p>) → ( dan ( → )</p></td>
-<td><p>C * ( B + A )</p></td>
-</tr>
-<tr class="row-even"><td><p>3. Konversi postfix</p></td>
-<td><p>Menggunakan aturan Postfix</p></td>
-<td><p>C B A + *</p></td>
-</tr>
-<tr class="row-odd"><td><p>4. Balik hasil</p></td>
-<td><p>Reverse hasil langkah 3</p></td>
-<td><p><strong>* + A B C</strong></p></td>
+<tr class="row-odd"><td><p>Selesai</p></td>
+<td><p><strong>[11, 12, 22, 25, 34, 64, 90]</strong></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
+<hr class="docutils" />
+<section id="f-selection-sort">
+<h2>F. SELECTION SORT<a class="headerlink" href="#f-selection-sort" title="Link to this heading">#</a></h2>
+<p><strong>Konsep Dasar:</strong> Di setiap iterasinya, algoritma ini mencari elemen <strong>minimum</strong> dari bagian list yang belum terurut, lalu menukarnya dengan elemen di posisi paling depan dari bagian tersebut. Hanya ada <strong>1 kali pertukaran (swap) per pass</strong>.</p>
+<ul class="simple">
+<li><p><strong>Time Complexity:</strong> O(n²) untuk Best, Average, dan Worst case.</p></li>
+<li><p><strong>Sifat:</strong> Tidak Stabil (<em>Unstable</em>).</p></li>
+<li><p><strong>Kelebihan:</strong> Sangat efisien jika operasi <em>swap</em> (pertukaran memori) memakan biaya/waktu yang mahal.</p></li>
+</ul>
+<p><strong>Tracing Selection Sort (Contoh Data: [29, 10, 14, 37, 13]):</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pass</p></th>
+<th class="head"><p>Elemen Min</p></th>
+<th class="head"><p>Ditukar dengan</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Pass 1</p></td>
+<td><p>10 (idx 1)</p></td>
+<td><p>29 (idx 0)</p></td>
+<td><p>[10, 29, 14, 37, 13]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pass 2</p></td>
+<td><p>13 (idx 4)</p></td>
+<td><p>29 (idx 1)</p></td>
+<td><p>[10, 13, 14, 37, 29]</p></td>
+</tr>
+<tr class="row-even"><td><p>Pass 3</p></td>
+<td><p>14 (idx 2)</p></td>
+<td><p>sudah di posisi</p></td>
+<td><p>[10, 13, 14, 37, 29]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pass 4</p></td>
+<td><p>29 (idx 4)</p></td>
+<td><p>37 (idx 3)</p></td>
+<td><p>[10, 13, 14, 29, 37]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="g-insertion-sort">
+<h2>G. INSERTION SORT<a class="headerlink" href="#g-insertion-sort" title="Link to this heading">#</a></h2>
+<p><strong>Konsep Dasar:</strong> Bekerja seperti cara orang mengurutkan kartu di tangan. Algoritma mengasumsikan bagian awal list sudah terurut, lalu mengambil satu data baru dan <strong>menyisipkannya</strong> (<em>insert</em>) ke posisi yang benar di dalam bagian yang sudah terurut tersebut dengan cara menggeser (<em>shift</em>) elemen yang lebih besar.</p>
+<ul class="simple">
+<li><p><strong>Time Complexity:</strong> O(n) saat <em>best case</em> (data hampir terurut).</p></li>
+<li><p><strong>Sifat:</strong> Stabil (<em>Stable</em>).</p></li>
+<li><p><strong>Kelebihan:</strong> Sangat cepat untuk data berskala kecil atau data yang sudah hampir terurut secara alami.</p></li>
+</ul>
+<p><strong>Tracing Insertion Sort (Contoh Data: [12, 11, 13, 5, 6]):</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pass</p></th>
+<th class="head"><p>Kunci</p></th>
+<th class="head"><p>Hasil Setelah Disisipkan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Pass 1</p></td>
+<td><p>11</p></td>
+<td><p>[11, 12, 13, 5, 6]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pass 2</p></td>
+<td><p>13</p></td>
+<td><p>[11, 12, 13, 5, 6]</p></td>
+</tr>
+<tr class="row-even"><td><p>Pass 3</p></td>
+<td><p>5</p></td>
+<td><p>[5, 11, 12, 13, 6]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pass 4</p></td>
+<td><p>6</p></td>
+<td><p>[5, 6, 11, 12, 13]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="bonus-tabel-perbandingan-semua-sorting">
+<h2>📊 BONUS: Tabel Perbandingan Semua Sorting<a class="headerlink" href="#bonus-tabel-perbandingan-semua-sorting" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Algoritma</p></th>
+<th class="head"><p>Best Case</p></th>
+<th class="head"><p>Average</p></th>
+<th class="head"><p>Worst Case</p></th>
+<th class="head"><p>Space</p></th>
+<th class="head"><p>Stable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bubble Sort</p></td>
+<td><p>O(n)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(1)</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>Selection Sort</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(1)</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Insertion Sort</p></td>
+<td><p>O(n)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(n²)</p></td>
+<td><p>O(1)</p></td>
+<td><p>✅</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>==========================================<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="konversi-infix-ke-postfix-prefix">
-<h1>KONVERSI INFIX KE POSTFIX &amp; PREFIX<a class="headerlink" href="#konversi-infix-ke-postfix-prefix" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="kumpulan-fungsi-bubble-sort">
+<h1>1. KUMPULAN FUNGSI BUBBLE SORT<a class="headerlink" href="#kumpulan-fungsi-bubble-sort" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id2">
 <h1>==========================================<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
-<p>def infix_to_postfix(ekspresi):
-prioritas = {‘+’: 1, ‘-’: 1, ‘*’: 2, ‘/’: 2}
-stack, output = [], []</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for token in ekspresi.replace(&quot; &quot;, &quot;&quot;):
-    if token.isalpha():
-        output.append(token)
-    elif token == &#39;(&#39;:
-        stack.append(token)
-    elif token == &#39;)&#39;:
-        while stack and stack[-1] != &#39;(&#39;:
-            output.append(stack.pop())
-        stack.pop()
-    else:
-        while (stack and stack[-1] != &#39;(&#39; and
-               prioritas.get(stack[-1], 0) &gt;= prioritas.get(token, 0)):
-            output.append(stack.pop())
-        stack.append(token)
+<p>def bubble_sort_ascending(data):
+arr = data.copy()
+n = len(arr)
+total_swap = 0
+print(f”Data awal Bubble: {arr}”)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(n - 1):
+    for j in range(0, n - i - 1):
+        if arr[j] &gt; arr[j + 1]:  # jika kiri &gt; kanan
+            arr[j], arr[j+1] = arr[j+1], arr[j]  # tukar
+            total_swap += 1
 
-while stack:
-    output.append(stack.pop())
-
-return &quot; &quot;.join(output)
+print(f&quot;Hasil Akhir (Asc) : {arr} | Total Swap: {total_swap}&quot;)
+return arr
 </pre></div>
 </div>
-<p>def infix_to_prefix(ekspresi):
-# Langkah 1: balik dan ganti kurung
-dibalik = ekspresi[::-1]
-ganti = “”
-for c in dibalik:
-if c == ‘(’:   ganti += ‘)’
-elif c == ‘)’: ganti += ‘(’
-else:          ganti += c</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Langkah 2: Konversi ke postfix
-postfix = infix_to_postfix(ganti)
-
-# Langkah 3: Balik hasil postfix
-return &quot; &quot;.join(postfix.split()[::-1])
+<p>def bubble_sort_descending(data):
+arr = data.copy()
+n = len(arr)
+for i in range(n - 1):
+for j in range(0, n - i - 1):
+if arr[j] &lt; arr[j + 1]:  # ubah &gt; menjadi &lt; untuk descending
+arr[j], arr[j+1] = arr[j+1], arr[j]
+print(f”Hasil Akhir (Desc): {arr}”)
+return arr</p>
+<p>def bubble_sort_optimized(data):
+arr = data.copy()
+n = len(arr)
+for i in range(n - 1):
+sudah_terurut = True   # flag optimasi
+for j in range(0, n - i - 1):
+if arr[j] &gt; arr[j + 1]:
+arr[j], arr[j+1] = arr[j+1], arr[j]
+sudah_terurut = False</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    if sudah_terurut:   # tidak ada swap = sudah urut, stop!
+        print(f&quot;Early exit: Selesai lebih awal di pass {i+1}&quot;)
+        break
+return arr
 </pre></div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id3">
 <h1>==========================================<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-semua-soal">
-<h1>UJI COBA SEMUA SOAL<a class="headerlink" href="#uji-coba-semua-soal" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="kumpulan-fungsi-selection-sort">
+<h1>2. KUMPULAN FUNGSI SELECTION SORT<a class="headerlink" href="#kumpulan-fungsi-selection-sort" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id4">
 <h1>==========================================<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
-<p>soal = [“A+B”, “A+B*C”, “(A+B)<em>C”, “A</em>(B+C)”, “(A-B)/(C+D)”]</p>
-<p>print(f”{‘Infix’:&lt;20} {‘Postfix’:&lt;20} {‘Prefix’}”)
-print(“-” * 55)
-for s in soal:
-print(f”{s:&lt;20} {infix_to_postfix(s):&lt;20} {infix_to_prefix(s)}”)</p>
+<p>def selection_sort(data):
+arr = data.copy()
+n = len(arr)
+print(f”\nData awal Selection: {arr}”)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(n - 1):
+    idx_min = i
+    for j in range(i + 1, n):
+        if arr[j] &lt; arr[idx_min]:
+            idx_min = j
+    
+    # Tukar tepat 1 kali per pass
+    if idx_min != i:
+        arr[i], arr[idx_min] = arr[idx_min], arr[i]
+        
+print(f&quot;Hasil Akhir (Asc)  : {arr}&quot;)
+return arr
+</pre></div>
+</div>
+<p>def selection_sort_nama(nama):
+arr = nama.copy()
+n = len(arr)
+for i in range(n - 1):
+idx_min = i
+for j in range(i + 1, n):
+if arr[j].lower() &lt; arr[idx_min].lower():   # bandingkan alfabet
+idx_min = j
+arr[i], arr[idx_min] = arr[idx_min], arr[i]
+return arr</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>==========================================<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kumpulan-fungsi-insertion-sort">
+<h1>3. KUMPULAN FUNGSI INSERTION SORT<a class="headerlink" href="#kumpulan-fungsi-insertion-sort" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>==========================================<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<p>def insertion_sort(data):
+arr = data.copy()
+n = len(arr)
+print(f”\nData awal Insertion: {arr}”)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(1, n):
+    kunci = arr[i]
+    j = i - 1
+    
+    # Geser elemen yang lebih besar ke kanan
+    while j &gt;= 0 and arr[j] &gt; kunci:
+        arr[j + 1] = arr[j]
+        j -= 1
+        
+    arr[j + 1] = kunci   # sisipkan kunci
+
+print(f&quot;Hasil Akhir (Asc)  : {arr}&quot;)
+return arr
+</pre></div>
+</div>
+<p>def insertion_sort_desc(data):
+arr = data.copy()
+n = len(arr)
+for i in range(1, n):
+kunci = arr[i]
+j = i - 1
+while j &gt;= 0 and arr[j] &lt; kunci:   # ubah &gt; menjadi &lt; untuk descending
+arr[j + 1] = arr[j]
+j -= 1
+arr[j + 1] = kunci
+print(f”Hasil Akhir (Desc) : {arr}”)
+return arr</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>==========================================<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-kode">
+<h1>UJI COBA KODE<a class="headerlink" href="#uji-coba-kode" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>==========================================<a class="headerlink" href="#id8" title="Link to this heading">#</a></h1>
+<p>if <strong>name</strong> == “<strong>main</strong>”:
+angka_tes = [64, 34, 25, 12, 22, 11, 90]</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bubble_sort_ascending(angka_tes)
+bubble_sort_descending(angka_tes)
+
+selection_sort(angka_tes)
+
+nama_tes = [&quot;Sari&quot;, &quot;Ahmad&quot;, &quot;Budi&quot;, &quot;Rina&quot;, &quot;Doni&quot;]
+print(f&quot;Selection Sort Nama: {selection_sort_nama(nama_tes)}&quot;)
+
+insertion_sort(angka_tes)
+insertion_sort_desc(angka_tes)
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -524,20 +719,20 @@ print(f”{s:&lt;20} {infix_to_postfix(s):&lt;20} {infix_to_prefix(s)}”)</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="stack-queue.html"
+       href="infix-prefix-postfix.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stack &amp; Queue</p>
+        <p class="prev-next-title">Infix, Prefix, dan Postfix</p>
       </div>
     </a>
     <a class="right-next"
-       href="sorting.html"
+       href="hashing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sorting</p>
+        <p class="prev-next-title">Hashing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -559,19 +754,26 @@ print(f”{s:&lt;20} {infix_to_postfix(s):&lt;20} {infix_to_prefix(s)}”)</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Infix, Prefix, dan Postfix</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d2-konversi-infix-ke-prefix">D2. Konversi Infix ke Prefix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-langkah-a-b-c-a-b-c">Contoh langkah: (A + B) * C → <strong>* + A B C</strong></a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sorting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-sorting-pengurutan-data">Algoritma Sorting (Pengurutan Data)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-bubble-sort">E. BUBBLE SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-selection-sort">F. SELECTION SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-insertion-sort">G. INSERTION SORT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-tabel-perbandingan-semua-sorting">📊 BONUS: Tabel Perbandingan Semua Sorting</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-infix-ke-postfix-prefix">KONVERSI INFIX KE POSTFIX &amp; PREFIX</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-bubble-sort">1. KUMPULAN FUNGSI BUBBLE SORT</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-semua-soal">UJI COBA SEMUA SOAL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-selection-sort">2. KUMPULAN FUNGSI SELECTION SORT</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kumpulan-fungsi-insertion-sort">3. KUMPULAN FUNGSI INSERTION SORT</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">UJI COBA KODE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">==========================================</a></li>
 </ul>
 
   </nav></div>

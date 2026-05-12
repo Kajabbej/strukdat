@@ -171,14 +171,33 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Materi</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Stack &amp; Queue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="infix-prefix-postfix.html">2. Infix, Prefix, dan Postfix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25-196_Moh.Ghufron_Shorting.html">3. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infix-prefix-postfix.html">Infix, Prefix, dan Postfix</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="sorting.html">Sorting</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="hashing.html">4. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list.html">5. List</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tugas-stack.html">1. Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25-196_Moh.Ghufron_Shorting.html">2. Sorting</a></li>
 </ul>
 
     </div>
@@ -301,7 +320,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -317,6 +338,26 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-stack-tumpukan">A. Stack (Tumpukan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-queue-antrean">B. Queue (Antrean)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-deque-double-ended-queue">C. Deque (Double-Ended Queue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-notasi-matematika-infix-prefix-postfix">D. Notasi Matematika (Infix, Prefix, Postfix)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-algoritma-sorting-pengurutan">E. Algoritma Sorting (Pengurutan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-hashing">F. Hashing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-kode-python">Implementasi Kode Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-queue-deque">Stack, Queue &amp; Deque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-sorting">Algoritma Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hashing-chaining">Hashing (Chaining)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba">Uji Coba</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -328,7 +369,154 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stack-queue">
 <h1>Stack &amp; Queue<a class="headerlink" href="#stack-queue" title="Link to this heading">#</a></h1>
-<p>Materi segera hadir.</p>
+<section id="a-stack-tumpukan">
+<h2>A. Stack (Tumpukan)<a class="headerlink" href="#a-stack-tumpukan" title="Link to this heading">#</a></h2>
+<p>Stack adalah koleksi data yang menggunakan prinsip <strong>LIFO (Last In, First Out)</strong>. Elemen yang terakhir dimasukkan akan menjadi yang pertama kali dikeluarkan.</p>
+<ul class="simple">
+<li><p><strong>Push</strong>: Menambahkan elemen ke posisi teratas.</p></li>
+<li><p><strong>Pop</strong>: Menghapus dan mengambil elemen teratas.</p></li>
+<li><p><strong>Peek</strong>: Melihat elemen teratas tanpa menghapusnya.</p></li>
+<li><p><strong>IsEmpty/Size</strong>: Mengecek kondisi kosong atau jumlah elemen.</p></li>
+</ul>
+</section>
+<section id="b-queue-antrean">
+<h2>B. Queue (Antrean)<a class="headerlink" href="#b-queue-antrean" title="Link to this heading">#</a></h2>
+<p>Queue menggunakan prinsip <strong>FIFO (First In, First Out)</strong>. Data yang pertama masuk adalah yang pertama diproses.</p>
+<ul class="simple">
+<li><p><strong>Enqueue</strong>: Menambah elemen di bagian belakang (rear).</p></li>
+<li><p><strong>Dequeue</strong>: Menghapus elemen dari bagian depan (front).</p></li>
+</ul>
+</section>
+<section id="c-deque-double-ended-queue">
+<h2>C. Deque (Double-Ended Queue)<a class="headerlink" href="#c-deque-double-ended-queue" title="Link to this heading">#</a></h2>
+<p>Koleksi data di mana penambahan atau penghapusan elemen dapat dilakukan dari kedua ujung (depan dan belakang).</p>
+</section>
+<section id="d-notasi-matematika-infix-prefix-postfix">
+<h2>D. Notasi Matematika (Infix, Prefix, Postfix)<a class="headerlink" href="#d-notasi-matematika-infix-prefix-postfix" title="Link to this heading">#</a></h2>
+<p>Posisi operator menentukan jenis notasi:</p>
+<ol class="arabic simple">
+<li><p><strong>Infix</strong>: Operator di tengah (<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">+</span> <span class="pre">B</span></code>).</p></li>
+<li><p><strong>Prefix</strong>: Operator di depan (<code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">A</span> <span class="pre">B</span></code>).</p></li>
+<li><p><strong>Postfix</strong>: Operator di belakang (<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">B</span> <span class="pre">+</span></code>).</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Aturan Precedence</strong>: Urutan prioritas dari yang tertinggi adalah Kurung <code class="docutils literal notranslate"><span class="pre">()</span></code>, Eksponen <code class="docutils literal notranslate"><span class="pre">**</span></code>, Perkalian/Pembagian <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">/</span></code>, dan Penjumlahan/Pengurangan <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span></code>.</p></li>
+</ul>
+</section>
+<section id="e-algoritma-sorting-pengurutan">
+<h2>E. Algoritma Sorting (Pengurutan)<a class="headerlink" href="#e-algoritma-sorting-pengurutan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Bubble Sort</strong>: Membandingkan elemen bersebelahan dan menukarnya jika urutannya salah.</p></li>
+<li><p><strong>Selection Sort</strong>: Mencari nilai minimum dan memindahkannya ke awal posisi yang belum terurut.</p></li>
+<li><p><strong>Insertion Sort</strong>: Menyisipkan elemen satu per satu ke posisi yang tepat dalam sublist yang sudah terurut.</p></li>
+<li><p><strong>Quick Sort</strong>: Menggunakan strategi <em>divide-and-conquer</em> dengan membagi list berdasarkan nilai <em>pivot</em>.</p></li>
+</ul>
+</section>
+<section id="f-hashing">
+<h2>F. Hashing<a class="headerlink" href="#f-hashing" title="Link to this heading">#</a></h2>
+<p>Proses pengindeksan data untuk pencarian cepat menggunakan kunci hash.</p>
+<ul class="simple">
+<li><p><strong>Collision</strong>: Terjadi jika dua kunci memiliki nilai hash yang sama.</p></li>
+<li><p><strong>Solusi</strong>: <em>Open Addressing</em> (Linear/Quadratic Probing) atau <em>Chaining</em> (Closed Addressing).</p></li>
+</ul>
+</section>
+<section id="implementasi-kode-python">
+<h2>Implementasi Kode Python<a class="headerlink" href="#implementasi-kode-python" title="Link to this heading">#</a></h2>
+<section id="stack-queue-deque">
+<h3>Stack, Queue &amp; Deque<a class="headerlink" href="#stack-queue-deque" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maks</span> <span class="o">=</span> <span class="n">maks</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maks</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maks</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OVERFLOW! Stack penuh (maks </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">maks</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;UNDERFLOW! Stack kosong&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Queue</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="algoritma-sorting">
+<h3>Algoritma Sorting<a class="headerlink" href="#algoritma-sorting" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bubbleSort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lst</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">selectionSort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">lst</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lst</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
+                <span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lst</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insertionSort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">hole</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">hole</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lst</span><span class="p">[</span><span class="n">hole</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">lst</span><span class="p">[</span><span class="n">hole</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">hole</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">hole</span> <span class="o">=</span> <span class="n">hole</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">lst</span><span class="p">[</span><span class="n">hole</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">lst</span>
+</pre></div>
+</div>
+</section>
+<section id="hashing-chaining">
+<h3>Hashing (Chaining)<a class="headerlink" href="#hashing-chaining" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HashTable</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hashFunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hashFunction</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="uji-coba">
+<h3>Uji Coba<a class="headerlink" href="#uji-coba" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bubble Sort:&quot;</span><span class="p">,</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selection Sort:&quot;</span><span class="p">,</span> <span class="n">selectionSort</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Insertion Sort:&quot;</span><span class="p">,</span> <span class="n">insertionSort</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -385,6 +573,35 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-stack-tumpukan">A. Stack (Tumpukan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-queue-antrean">B. Queue (Antrean)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-deque-double-ended-queue">C. Deque (Double-Ended Queue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-notasi-matematika-infix-prefix-postfix">D. Notasi Matematika (Infix, Prefix, Postfix)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-algoritma-sorting-pengurutan">E. Algoritma Sorting (Pengurutan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-hashing">F. Hashing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-kode-python">Implementasi Kode Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-queue-deque">Stack, Queue &amp; Deque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-sorting">Algoritma Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hashing-chaining">Hashing (Chaining)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba">Uji Coba</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
