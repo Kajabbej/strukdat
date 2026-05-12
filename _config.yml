@@ -1,0 +1,18 @@
+title: Struktur Data - Moh. Ghufron
+author: Moh. Ghufron
+logo: logo.png
+
+execute:
+  execute_notebooks: off
+
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+    - colon_fence
+    - substitution
+    - linkify
+
+html:
+  use_issues_button: false
+  use_repository_button: false

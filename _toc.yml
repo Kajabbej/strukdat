@@ -1,0 +1,20 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Materi
+    chapters:
+    - file: materi/stack-queue
+      title: 1. Stack & Queue
+    - file: materi/infix-prefix-postfix
+      title: 2. Infix, Prefix, dan Postfix
+    - file: 25-196_Moh_Ghufron_Shorting
+      title: 3. Sorting
+    - file: 25-196_Moh_Ghufron_Hashing
+      title: 4. Hashing
+    - file: materi/list
+      title: 5. List
+
+  - caption: Tugas
+    chapters:
+    - file: materi/tugas-stack
+      title: 1. Stack

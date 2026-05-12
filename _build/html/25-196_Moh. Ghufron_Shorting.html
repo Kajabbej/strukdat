@@ -1,0 +1,1206 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sorting - Perbandingan Waktu Eksekusi &#8212; Struktur Data - Moh. Ghufron</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '25-196_Moh. Ghufron_Shorting';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="25-196_Moh.Ghufron_Hashing.html" />
+    <link rel="prev" title="Struktur Data" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Struktur Data - Moh. Ghufron - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Struktur Data - Moh. Ghufron - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Struktur Data
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Materi Struktur Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sorting</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/25-196_Moh. Ghufron_Shorting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sorting - Perbandingan Waktu Eksekusi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bubble-sort-selection-sort-insertion-sort-merge-sort-quick-sort">Bubble Sort | Selection Sort | Insertion Sort | Merge Sort | Quick Sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-random-urutan-ascending">100 Data Random, Urutan Ascending</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sorting-perbandingan-waktu-eksekusi">
+<h1>Sorting - Perbandingan Waktu Eksekusi<a class="headerlink" href="#sorting-perbandingan-waktu-eksekusi" title="Link to this heading">#</a></h1>
+<section id="bubble-sort-selection-sort-insertion-sort-merge-sort-quick-sort">
+<h2>Bubble Sort | Selection Sort | Insertion Sort | Merge Sort | Quick Sort<a class="headerlink" href="#bubble-sort-selection-sort-insertion-sort-merge-sort-quick-sort" title="Link to this heading">#</a></h2>
+<section id="data-random-urutan-ascending">
+<h3>100 Data Random, Urutan Ascending<a class="headerlink" href="#data-random-urutan-ascending" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. DEFINISI ALGORITMA SORTING</span>
+<span class="c1"># ==========================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bubble_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">selection_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
+                <span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="c1"># Menggunakan versi Silent untuk mengukur waktu komputasi murni</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
+    
+    <span class="c1"># Merge process</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Menggunakan wrapper agar array tidak mutated saat di-loop</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="n">_quick_sort_recursive</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_quick_sort_recursive</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">_partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+        <span class="n">_quick_sort_recursive</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">pi</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">_quick_sort_recursive</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">pi</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">low</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 2. PENGUJIAN WAKTU EKSEKUSI (100 - 500 DATA)</span>
+<span class="c1"># ==========================================</span>
+
+<span class="n">ukuran_data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+
+<span class="c1"># Generate data acak untuk setiap ukuran</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># Agar data tetap sama setiap di-run ulang</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ukuran_data</span><span class="p">}</span>
+
+<span class="n">algoritma_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Bubble Sort&quot;</span><span class="p">:</span> <span class="n">bubble_sort</span><span class="p">,</span>
+    <span class="s2">&quot;Selection Sort&quot;</span><span class="p">:</span> <span class="n">selection_sort</span><span class="p">,</span>
+    <span class="s2">&quot;Insertion Sort&quot;</span><span class="p">:</span> <span class="n">insertion_sort</span><span class="p">,</span>
+    <span class="s2">&quot;Merge Sort&quot;</span><span class="p">:</span> <span class="n">merge_sort</span><span class="p">,</span>
+    <span class="s2">&quot;Quick Sort&quot;</span><span class="p">:</span> <span class="n">quick_sort</span>
+<span class="p">}</span>
+
+<span class="c1"># Simpan hasil dalam dictionary</span>
+<span class="n">hasil_waktu</span> <span class="o">=</span> <span class="p">{</span><span class="n">nama</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">nama</span> <span class="ow">in</span> <span class="n">algoritma_dict</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulai pengujian...&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nama</span><span class="p">,</span> <span class="n">fungsi</span> <span class="ow">in</span> <span class="n">algoritma_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ukuran_data</span><span class="p">:</span>
+        <span class="n">data_uji</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">fungsi</span><span class="p">(</span><span class="n">data_uji</span><span class="p">)</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        
+        <span class="c1"># Simpan waktu dalam milidetik (ms) agar lebih mudah dibaca</span>
+        <span class="n">waktu_ms</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span> 
+        <span class="n">hasil_waktu</span><span class="p">[</span><span class="n">nama</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">waktu_ms</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pengujian selesai!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 3. CETAK TABEL REKAPITULASI</span>
+<span class="c1"># ==========================================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Algoritma&#39;</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}</span><span class="s2"> | Waktu Eksekusi (dalam Milidetik / ms)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;&#39;</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;100 Data&#39;</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;200 Data&#39;</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;300 Data&#39;</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;400 Data&#39;</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;500 Data&#39;</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">nama</span><span class="p">,</span> <span class="n">waktu_list</span> <span class="ow">in</span> <span class="n">hasil_waktu</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># Format tiap waktu menjadi 4 angka di belakang koma</span>
+    <span class="n">waktu_str</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">w</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">waktu_list</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nama</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">waktu_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">waktu_str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">waktu_str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">waktu_str</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">waktu_str</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;9</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mulai pengujian...
+Pengujian selesai!
+
+======================================================================
+Algoritma          | Waktu Eksekusi (dalam Milidetik / ms)
+----------------------------------------------------------------------
+                   | 100 Data  | 200 Data  | 300 Data  | 400 Data  | 500 Data 
+======================================================================
+Bubble Sort        | 0.6163    | 2.9599    | 5.9459    | 12.1081   | 14.5438  
+Selection Sort     | 0.3813    | 1.3364    | 3.3363    | 4.8494    | 7.3546   
+Insertion Sort     | 0.2959    | 1.1764    | 3.4547    | 4.4266    | 7.1996   
+Merge Sort         | 0.2265    | 0.4209    | 0.7365    | 0.8967    | 1.2485   
+Quick Sort         | 0.1197    | 0.1721    | 0.3404    | 0.4210    | 0.6159   
+======================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ========================</span>
+<span class="c1"># BUBBLE SORT</span>
+<span class="c1"># ========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bubble_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="c1"># ========================</span>
+<span class="c1"># SELECTION SORT</span>
+<span class="c1"># ========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">selection_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
+                <span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="c1"># ========================</span>
+<span class="c1"># INSERTION SORT</span>
+<span class="c1"># ========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="c1"># --- Jalankan &amp; Ukur Waktu ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+
+<span class="c1"># Bubble Sort</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">hasil_bubble</span> <span class="o">=</span> <span class="n">bubble_sort</span><span class="p">(</span><span class="n">DATA_ASLI</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">waktu_bubble</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bubble Sort    : </span><span class="si">{</span><span class="n">waktu_bubble</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil          : </span><span class="si">{</span><span class="n">hasil_bubble</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Selection Sort</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">hasil_selection</span> <span class="o">=</span> <span class="n">selection_sort</span><span class="p">(</span><span class="n">DATA_ASLI</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">waktu_selection</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selection Sort : </span><span class="si">{</span><span class="n">waktu_selection</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil          : </span><span class="si">{</span><span class="n">hasil_selection</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Insertion Sort</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">hasil_insertion</span> <span class="o">=</span> <span class="n">insertion_sort</span><span class="p">(</span><span class="n">DATA_ASLI</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">waktu_insertion</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Insertion Sort : </span><span class="si">{</span><span class="n">waktu_insertion</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil          : </span><span class="si">{</span><span class="n">hasil_insertion</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=======================================================
+Bubble Sort    : 0.00094990 detik
+Hasil          : [7, 26, 28, 31, 33, 45, 47, 72, 81, 82, 90, 95, 96, 100, 104, 105, 115, 128, 143, 160, 164, 167, 197, 204, 215, 221, 224, 226, 229, 234, 239, 251, 271, 282, 285, 297, 301, 345, 349, 353, 364, 368, 371, 374, 380, 388, 390, 430, 433, 460, 465, 471, 518, 550, 559, 566, 575, 592, 604, 605, 617, 619, 634, 644, 651, 655, 666, 678, 687, 693, 715, 719, 722, 734, 748, 755, 759, 760, 778, 782, 792, 826, 827, 829, 850, 855, 868, 876, 883, 888, 891, 907, 914, 947, 954, 964, 978, 983, 986, 990]
+
+Selection Sort : 0.00101400 detik
+Hasil          : [7, 26, 28, 31, 33, 45, 47, 72, 81, 82, 90, 95, 96, 100, 104, 105, 115, 128, 143, 160, 164, 167, 197, 204, 215, 221, 224, 226, 229, 234, 239, 251, 271, 282, 285, 297, 301, 345, 349, 353, 364, 368, 371, 374, 380, 388, 390, 430, 433, 460, 465, 471, 518, 550, 559, 566, 575, 592, 604, 605, 617, 619, 634, 644, 651, 655, 666, 678, 687, 693, 715, 719, 722, 734, 748, 755, 759, 760, 778, 782, 792, 826, 827, 829, 850, 855, 868, 876, 883, 888, 891, 907, 914, 947, 954, 964, 978, 983, 986, 990]
+
+Insertion Sort : 0.00065380 detik
+Hasil          : [7, 26, 28, 31, 33, 45, 47, 72, 81, 82, 90, 95, 96, 100, 104, 105, 115, 128, 143, 160, 164, 167, 197, 204, 215, 221, 224, 226, 229, 234, 239, 251, 271, 282, 285, 297, 301, 345, 349, 353, 364, 368, 371, 374, 380, 388, 390, 430, 433, 460, 465, 471, 518, 550, 559, 566, 575, 592, 604, 605, 617, 619, 634, 644, 651, 655, 666, 678, 687, 693, 715, 719, 722, 734, 748, 755, 759, 760, 778, 782, 792, 826, 827, 829, 850, 855, 868, 876, 883, 888, 891, 907, 914, 947, 954, 964, 978, 983, 986, 990]
+
+=======================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ========================</span>
+<span class="c1"># MERGE SORT + DETAIL</span>
+<span class="c1"># ========================</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">step</span>
+    <span class="n">indent</span> <span class="o">=</span> <span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">level</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">indent</span><span class="si">}</span><span class="s2"> SPLIT  : </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span>
+
+    <span class="n">mid</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span>  <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="n">mid</span><span class="p">],</span> <span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">:],</span> <span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+    <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">indent</span><span class="si">}</span><span class="s2"> MERGE  : </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">merged</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">merged</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span>  <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># --- Jalankan ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MERGE SORT — Detail Proses&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+
+<span class="c1"># Jalankan Merge Sort (10 data biar detail keliatan)</span>
+<span class="n">sample_merge</span> <span class="o">=</span> <span class="n">DATA_ASLI</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">hasil_merge</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">sample_merge</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+<span class="n">waktu_merge</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="c1"># Ukur waktu merge untuk 100 data</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">merge_sort_100</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">DATA_ASLI</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+<span class="n">waktu_merge_100</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Waktu Merge Sort (100 data): </span><span class="si">{</span><span class="n">waktu_merge_100</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil Merge Sort:&quot;</span><span class="p">,</span> <span class="n">hasil_merge</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total step:&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Waktu Merge (10 data): </span><span class="si">{</span><span class="n">waktu_merge</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+<span class="c1"># ========================</span>
+<span class="c1"># QUICK SORT FUNCTION</span>
+<span class="c1"># ========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+        <span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">pi</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">pi</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">low</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># ========================</span>
+<span class="c1"># QUICK SORT 100 DATA</span>
+<span class="c1"># ========================</span>
+<span class="n">data_quick_100</span> <span class="o">=</span> <span class="n">DATA_ASLI</span><span class="p">[:]</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">quick_sort</span><span class="p">(</span><span class="n">data_quick_100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_quick_100</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+<span class="n">waktu_quick_100</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Waktu Quick Sort (100 data): </span><span class="si">{</span><span class="n">waktu_quick_100</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Quick Sort (10 pertama):&quot;</span><span class="p">,</span> <span class="n">data_quick_100</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=======================================================
+MERGE SORT — Detail Proses
+=======================================================
+ SPLIT  : [655, 115, 26, 760, 282, 251, 229, 143, 755, 105]
+   SPLIT  : [655, 115, 26, 760, 282]
+     SPLIT  : [655, 115]
+       SPLIT  : [655]
+       SPLIT  : [115]
+     MERGE  : [655] + [115] → [115, 655]
+     SPLIT  : [26, 760, 282]
+       SPLIT  : [26]
+       SPLIT  : [760, 282]
+         SPLIT  : [760]
+         SPLIT  : [282]
+       MERGE  : [760] + [282] → [282, 760]
+     MERGE  : [26] + [282, 760] → [26, 282, 760]
+   MERGE  : [115, 655] + [26, 282, 760] → [26, 115, 282, 655, 760]
+   SPLIT  : [251, 229, 143, 755, 105]
+     SPLIT  : [251, 229]
+       SPLIT  : [251]
+       SPLIT  : [229]
+     MERGE  : [251] + [229] → [229, 251]
+     SPLIT  : [143, 755, 105]
+       SPLIT  : [143]
+       SPLIT  : [755, 105]
+         SPLIT  : [755]
+         SPLIT  : [105]
+       MERGE  : [755] + [105] → [105, 755]
+     MERGE  : [143] + [105, 755] → [105, 143, 755]
+   MERGE  : [229, 251] + [105, 143, 755] → [105, 143, 229, 251, 755]
+ MERGE  : [26, 115, 282, 655, 760] + [105, 143, 229, 251, 755] → [26, 105, 115, 143, 229, 251, 282, 655, 755, 760]
+ SPLIT  : [655, 115, 26, 760, 282, 251, 229, 143, 755, 105, 693, 759, 914, 559, 90, 605, 433, 33, 31, 96, 224, 239, 518, 617, 28, 575, 204, 734, 666, 719, 986, 430, 226, 460, 604, 285, 829, 891, 7, 778, 826, 164, 715, 983, 349, 964, 160, 221, 782, 345, 990, 95, 390, 100, 368, 868, 353, 619, 271, 827, 45, 748, 471, 550, 128, 388, 81, 566, 301, 850, 644, 634, 907, 883, 371, 592, 197, 722, 72, 47, 678, 234, 792, 297, 82, 876, 978, 888, 104, 947, 954, 465, 651, 855, 374, 167, 380, 364, 215, 687]
+   SPLIT  : [655, 115, 26, 760, 282, 251, 229, 143, 755, 105, 693, 759, 914, 559, 90, 605, 433, 33, 31, 96, 224, 239, 518, 617, 28, 575, 204, 734, 666, 719, 986, 430, 226, 460, 604, 285, 829, 891, 7, 778, 826, 164, 715, 983, 349, 964, 160, 221, 782, 345]
+     SPLIT  : [655, 115, 26, 760, 282, 251, 229, 143, 755, 105, 693, 759, 914, 559, 90, 605, 433, 33, 31, 96, 224, 239, 518, 617, 28]
+       SPLIT  : [655, 115, 26, 760, 282, 251, 229, 143, 755, 105, 693, 759]
+         SPLIT  : [655, 115, 26, 760, 282, 251]
+           SPLIT  : [655, 115, 26]
+             SPLIT  : [655]
+             SPLIT  : [115, 26]
+               SPLIT  : [115]
+               SPLIT  : [26]
+             MERGE  : [115] + [26] → [26, 115]
+           MERGE  : [655] + [26, 115] → [26, 115, 655]
+           SPLIT  : [760, 282, 251]
+             SPLIT  : [760]
+             SPLIT  : [282, 251]
+               SPLIT  : [282]
+               SPLIT  : [251]
+             MERGE  : [282] + [251] → [251, 282]
+           MERGE  : [760] + [251, 282] → [251, 282, 760]
+         MERGE  : [26, 115, 655] + [251, 282, 760] → [26, 115, 251, 282, 655, 760]
+         SPLIT  : [229, 143, 755, 105, 693, 759]
+           SPLIT  : [229, 143, 755]
+             SPLIT  : [229]
+             SPLIT  : [143, 755]
+               SPLIT  : [143]
+               SPLIT  : [755]
+             MERGE  : [143] + [755] → [143, 755]
+           MERGE  : [229] + [143, 755] → [143, 229, 755]
+           SPLIT  : [105, 693, 759]
+             SPLIT  : [105]
+             SPLIT  : [693, 759]
+               SPLIT  : [693]
+               SPLIT  : [759]
+             MERGE  : [693] + [759] → [693, 759]
+           MERGE  : [105] + [693, 759] → [105, 693, 759]
+         MERGE  : [143, 229, 755] + [105, 693, 759] → [105, 143, 229, 693, 755, 759]
+       MERGE  : [26, 115, 251, 282, 655, 760] + [105, 143, 229, 693, 755, 759] → [26, 105, 115, 143, 229, 251, 282, 655, 693, 755, 759, 760]
+       SPLIT  : [914, 559, 90, 605, 433, 33, 31, 96, 224, 239, 518, 617, 28]
+         SPLIT  : [914, 559, 90, 605, 433, 33]
+           SPLIT  : [914, 559, 90]
+             SPLIT  : [914]
+             SPLIT  : [559, 90]
+               SPLIT  : [559]
+               SPLIT  : [90]
+             MERGE  : [559] + [90] → [90, 559]
+           MERGE  : [914] + [90, 559] → [90, 559, 914]
+           SPLIT  : [605, 433, 33]
+             SPLIT  : [605]
+             SPLIT  : [433, 33]
+               SPLIT  : [433]
+               SPLIT  : [33]
+             MERGE  : [433] + [33] → [33, 433]
+           MERGE  : [605] + [33, 433] → [33, 433, 605]
+         MERGE  : [90, 559, 914] + [33, 433, 605] → [33, 90, 433, 559, 605, 914]
+         SPLIT  : [31, 96, 224, 239, 518, 617, 28]
+           SPLIT  : [31, 96, 224]
+             SPLIT  : [31]
+             SPLIT  : [96, 224]
+               SPLIT  : [96]
+               SPLIT  : [224]
+             MERGE  : [96] + [224] → [96, 224]
+           MERGE  : [31] + [96, 224] → [31, 96, 224]
+           SPLIT  : [239, 518, 617, 28]
+             SPLIT  : [239, 518]
+               SPLIT  : [239]
+               SPLIT  : [518]
+             MERGE  : [239] + [518] → [239, 518]
+             SPLIT  : [617, 28]
+               SPLIT  : [617]
+               SPLIT  : [28]
+             MERGE  : [617] + [28] → [28, 617]
+           MERGE  : [239, 518] + [28, 617] → [28, 239, 518, 617]
+         MERGE  : [31, 96, 224] + [28, 239, 518, 617] → [28, 31, 96, 224, 239, 518, 617]
+       MERGE  : [33, 90, 433, 559, 605, 914] + [28, 31, 96, 224, 239, 518, 617] → [28, 31, 33, 90, 96, 224, 239, 433, 518, 559, 605, 617, 914]
+     MERGE  : [26, 105, 115, 143, 229, 251, 282, 655, 693, 755, 759, 760] + [28, 31, 33, 90, 96, 224, 239, 433, 518, 559, 605, 617, 914] → [26, 28, 31, 33, 90, 96, 105, 115, 143, 224, 229, 239, 251, 282, 433, 518, 559, 605, 617, 655, 693, 755, 759, 760, 914]
+     SPLIT  : [575, 204, 734, 666, 719, 986, 430, 226, 460, 604, 285, 829, 891, 7, 778, 826, 164, 715, 983, 349, 964, 160, 221, 782, 345]
+       SPLIT  : [575, 204, 734, 666, 719, 986, 430, 226, 460, 604, 285, 829]
+         SPLIT  : [575, 204, 734, 666, 719, 986]
+           SPLIT  : [575, 204, 734]
+             SPLIT  : [575]
+             SPLIT  : [204, 734]
+               SPLIT  : [204]
+               SPLIT  : [734]
+             MERGE  : [204] + [734] → [204, 734]
+           MERGE  : [575] + [204, 734] → [204, 575, 734]
+           SPLIT  : [666, 719, 986]
+             SPLIT  : [666]
+             SPLIT  : [719, 986]
+               SPLIT  : [719]
+               SPLIT  : [986]
+             MERGE  : [719] + [986] → [719, 986]
+           MERGE  : [666] + [719, 986] → [666, 719, 986]
+         MERGE  : [204, 575, 734] + [666, 719, 986] → [204, 575, 666, 719, 734, 986]
+         SPLIT  : [430, 226, 460, 604, 285, 829]
+           SPLIT  : [430, 226, 460]
+             SPLIT  : [430]
+             SPLIT  : [226, 460]
+               SPLIT  : [226]
+               SPLIT  : [460]
+             MERGE  : [226] + [460] → [226, 460]
+           MERGE  : [430] + [226, 460] → [226, 430, 460]
+           SPLIT  : [604, 285, 829]
+             SPLIT  : [604]
+             SPLIT  : [285, 829]
+               SPLIT  : [285]
+               SPLIT  : [829]
+             MERGE  : [285] + [829] → [285, 829]
+           MERGE  : [604] + [285, 829] → [285, 604, 829]
+         MERGE  : [226, 430, 460] + [285, 604, 829] → [226, 285, 430, 460, 604, 829]
+       MERGE  : [204, 575, 666, 719, 734, 986] + [226, 285, 430, 460, 604, 829] → [204, 226, 285, 430, 460, 575, 604, 666, 719, 734, 829, 986]
+       SPLIT  : [891, 7, 778, 826, 164, 715, 983, 349, 964, 160, 221, 782, 345]
+         SPLIT  : [891, 7, 778, 826, 164, 715]
+           SPLIT  : [891, 7, 778]
+             SPLIT  : [891]
+             SPLIT  : [7, 778]
+               SPLIT  : [7]
+               SPLIT  : [778]
+             MERGE  : [7] + [778] → [7, 778]
+           MERGE  : [891] + [7, 778] → [7, 778, 891]
+           SPLIT  : [826, 164, 715]
+             SPLIT  : [826]
+             SPLIT  : [164, 715]
+               SPLIT  : [164]
+               SPLIT  : [715]
+             MERGE  : [164] + [715] → [164, 715]
+           MERGE  : [826] + [164, 715] → [164, 715, 826]
+         MERGE  : [7, 778, 891] + [164, 715, 826] → [7, 164, 715, 778, 826, 891]
+         SPLIT  : [983, 349, 964, 160, 221, 782, 345]
+           SPLIT  : [983, 349, 964]
+             SPLIT  : [983]
+             SPLIT  : [349, 964]
+               SPLIT  : [349]
+               SPLIT  : [964]
+             MERGE  : [349] + [964] → [349, 964]
+           MERGE  : [983] + [349, 964] → [349, 964, 983]
+           SPLIT  : [160, 221, 782, 345]
+             SPLIT  : [160, 221]
+               SPLIT  : [160]
+               SPLIT  : [221]
+             MERGE  : [160] + [221] → [160, 221]
+             SPLIT  : [782, 345]
+               SPLIT  : [782]
+               SPLIT  : [345]
+             MERGE  : [782] + [345] → [345, 782]
+           MERGE  : [160, 221] + [345, 782] → [160, 221, 345, 782]
+         MERGE  : [349, 964, 983] + [160, 221, 345, 782] → [160, 221, 345, 349, 782, 964, 983]
+       MERGE  : [7, 164, 715, 778, 826, 891] + [160, 221, 345, 349, 782, 964, 983] → [7, 160, 164, 221, 345, 349, 715, 778, 782, 826, 891, 964, 983]
+     MERGE  : [204, 226, 285, 430, 460, 575, 604, 666, 719, 734, 829, 986] + [7, 160, 164, 221, 345, 349, 715, 778, 782, 826, 891, 964, 983] → [7, 160, 164, 204, 221, 226, 285, 345, 349, 430, 460, 575, 604, 666, 715, 719, 734, 778, 782, 826, 829, 891, 964, 983, 986]
+   MERGE  : [26, 28, 31, 33, 90, 96, 105, 115, 143, 224, 229, 239, 251, 282, 433, 518, 559, 605, 617, 655, 693, 755, 759, 760, 914] + [7, 160, 164, 204, 221, 226, 285, 345, 349, 430, 460, 575, 604, 666, 715, 719, 734, 778, 782, 826, 829, 891, 964, 983, 986] → [7, 26, 28, 31, 33, 90, 96, 105, 115, 143, 160, 164, 204, 221, 224, 226, 229, 239, 251, 282, 285, 345, 349, 430, 433, 460, 518, 559, 575, 604, 605, 617, 655, 666, 693, 715, 719, 734, 755, 759, 760, 778, 782, 826, 829, 891, 914, 964, 983, 986]
+   SPLIT  : [990, 95, 390, 100, 368, 868, 353, 619, 271, 827, 45, 748, 471, 550, 128, 388, 81, 566, 301, 850, 644, 634, 907, 883, 371, 592, 197, 722, 72, 47, 678, 234, 792, 297, 82, 876, 978, 888, 104, 947, 954, 465, 651, 855, 374, 167, 380, 364, 215, 687]
+     SPLIT  : [990, 95, 390, 100, 368, 868, 353, 619, 271, 827, 45, 748, 471, 550, 128, 388, 81, 566, 301, 850, 644, 634, 907, 883, 371]
+       SPLIT  : [990, 95, 390, 100, 368, 868, 353, 619, 271, 827, 45, 748]
+         SPLIT  : [990, 95, 390, 100, 368, 868]
+           SPLIT  : [990, 95, 390]
+             SPLIT  : [990]
+             SPLIT  : [95, 390]
+               SPLIT  : [95]
+               SPLIT  : [390]
+             MERGE  : [95] + [390] → [95, 390]
+           MERGE  : [990] + [95, 390] → [95, 390, 990]
+           SPLIT  : [100, 368, 868]
+             SPLIT  : [100]
+             SPLIT  : [368, 868]
+               SPLIT  : [368]
+               SPLIT  : [868]
+             MERGE  : [368] + [868] → [368, 868]
+           MERGE  : [100] + [368, 868] → [100, 368, 868]
+         MERGE  : [95, 390, 990] + [100, 368, 868] → [95, 100, 368, 390, 868, 990]
+         SPLIT  : [353, 619, 271, 827, 45, 748]
+           SPLIT  : [353, 619, 271]
+             SPLIT  : [353]
+             SPLIT  : [619, 271]
+               SPLIT  : [619]
+               SPLIT  : [271]
+             MERGE  : [619] + [271] → [271, 619]
+           MERGE  : [353] + [271, 619] → [271, 353, 619]
+           SPLIT  : [827, 45, 748]
+             SPLIT  : [827]
+             SPLIT  : [45, 748]
+               SPLIT  : [45]
+               SPLIT  : [748]
+             MERGE  : [45] + [748] → [45, 748]
+           MERGE  : [827] + [45, 748] → [45, 748, 827]
+         MERGE  : [271, 353, 619] + [45, 748, 827] → [45, 271, 353, 619, 748, 827]
+       MERGE  : [95, 100, 368, 390, 868, 990] + [45, 271, 353, 619, 748, 827] → [45, 95, 100, 271, 353, 368, 390, 619, 748, 827, 868, 990]
+       SPLIT  : [471, 550, 128, 388, 81, 566, 301, 850, 644, 634, 907, 883, 371]
+         SPLIT  : [471, 550, 128, 388, 81, 566]
+           SPLIT  : [471, 550, 128]
+             SPLIT  : [471]
+             SPLIT  : [550, 128]
+               SPLIT  : [550]
+               SPLIT  : [128]
+             MERGE  : [550] + [128] → [128, 550]
+           MERGE  : [471] + [128, 550] → [128, 471, 550]
+           SPLIT  : [388, 81, 566]
+             SPLIT  : [388]
+             SPLIT  : [81, 566]
+               SPLIT  : [81]
+               SPLIT  : [566]
+             MERGE  : [81] + [566] → [81, 566]
+           MERGE  : [388] + [81, 566] → [81, 388, 566]
+         MERGE  : [128, 471, 550] + [81, 388, 566] → [81, 128, 388, 471, 550, 566]
+         SPLIT  : [301, 850, 644, 634, 907, 883, 371]
+           SPLIT  : [301, 850, 644]
+             SPLIT  : [301]
+             SPLIT  : [850, 644]
+               SPLIT  : [850]
+               SPLIT  : [644]
+             MERGE  : [850] + [644] → [644, 850]
+           MERGE  : [301] + [644, 850] → [301, 644, 850]
+           SPLIT  : [634, 907, 883, 371]
+             SPLIT  : [634, 907]
+               SPLIT  : [634]
+               SPLIT  : [907]
+             MERGE  : [634] + [907] → [634, 907]
+             SPLIT  : [883, 371]
+               SPLIT  : [883]
+               SPLIT  : [371]
+             MERGE  : [883] + [371] → [371, 883]
+           MERGE  : [634, 907] + [371, 883] → [371, 634, 883, 907]
+         MERGE  : [301, 644, 850] + [371, 634, 883, 907] → [301, 371, 634, 644, 850, 883, 907]
+       MERGE  : [81, 128, 388, 471, 550, 566] + [301, 371, 634, 644, 850, 883, 907] → [81, 128, 301, 371, 388, 471, 550, 566, 634, 644, 850, 883, 907]
+     MERGE  : [45, 95, 100, 271, 353, 368, 390, 619, 748, 827, 868, 990] + [81, 128, 301, 371, 388, 471, 550, 566, 634, 644, 850, 883, 907] → [45, 81, 95, 100, 128, 271, 301, 353, 368, 371, 388, 390, 471, 550, 566, 619, 634, 644, 748, 827, 850, 868, 883, 907, 990]
+     SPLIT  : [592, 197, 722, 72, 47, 678, 234, 792, 297, 82, 876, 978, 888, 104, 947, 954, 465, 651, 855, 374, 167, 380, 364, 215, 687]
+       SPLIT  : [592, 197, 722, 72, 47, 678, 234, 792, 297, 82, 876, 978]
+         SPLIT  : [592, 197, 722, 72, 47, 678]
+           SPLIT  : [592, 197, 722]
+             SPLIT  : [592]
+             SPLIT  : [197, 722]
+               SPLIT  : [197]
+               SPLIT  : [722]
+             MERGE  : [197] + [722] → [197, 722]
+           MERGE  : [592] + [197, 722] → [197, 592, 722]
+           SPLIT  : [72, 47, 678]
+             SPLIT  : [72]
+             SPLIT  : [47, 678]
+               SPLIT  : [47]
+               SPLIT  : [678]
+             MERGE  : [47] + [678] → [47, 678]
+           MERGE  : [72] + [47, 678] → [47, 72, 678]
+         MERGE  : [197, 592, 722] + [47, 72, 678] → [47, 72, 197, 592, 678, 722]
+         SPLIT  : [234, 792, 297, 82, 876, 978]
+           SPLIT  : [234, 792, 297]
+             SPLIT  : [234]
+             SPLIT  : [792, 297]
+               SPLIT  : [792]
+               SPLIT  : [297]
+             MERGE  : [792] + [297] → [297, 792]
+           MERGE  : [234] + [297, 792] → [234, 297, 792]
+           SPLIT  : [82, 876, 978]
+             SPLIT  : [82]
+             SPLIT  : [876, 978]
+               SPLIT  : [876]
+               SPLIT  : [978]
+             MERGE  : [876] + [978] → [876, 978]
+           MERGE  : [82] + [876, 978] → [82, 876, 978]
+         MERGE  : [234, 297, 792] + [82, 876, 978] → [82, 234, 297, 792, 876, 978]
+       MERGE  : [47, 72, 197, 592, 678, 722] + [82, 234, 297, 792, 876, 978] → [47, 72, 82, 197, 234, 297, 592, 678, 722, 792, 876, 978]
+       SPLIT  : [888, 104, 947, 954, 465, 651, 855, 374, 167, 380, 364, 215, 687]
+         SPLIT  : [888, 104, 947, 954, 465, 651]
+           SPLIT  : [888, 104, 947]
+             SPLIT  : [888]
+             SPLIT  : [104, 947]
+               SPLIT  : [104]
+               SPLIT  : [947]
+             MERGE  : [104] + [947] → [104, 947]
+           MERGE  : [888] + [104, 947] → [104, 888, 947]
+           SPLIT  : [954, 465, 651]
+             SPLIT  : [954]
+             SPLIT  : [465, 651]
+               SPLIT  : [465]
+               SPLIT  : [651]
+             MERGE  : [465] + [651] → [465, 651]
+           MERGE  : [954] + [465, 651] → [465, 651, 954]
+         MERGE  : [104, 888, 947] + [465, 651, 954] → [104, 465, 651, 888, 947, 954]
+         SPLIT  : [855, 374, 167, 380, 364, 215, 687]
+           SPLIT  : [855, 374, 167]
+             SPLIT  : [855]
+             SPLIT  : [374, 167]
+               SPLIT  : [374]
+               SPLIT  : [167]
+             MERGE  : [374] + [167] → [167, 374]
+           MERGE  : [855] + [167, 374] → [167, 374, 855]
+           SPLIT  : [380, 364, 215, 687]
+             SPLIT  : [380, 364]
+               SPLIT  : [380]
+               SPLIT  : [364]
+             MERGE  : [380] + [364] → [364, 380]
+             SPLIT  : [215, 687]
+               SPLIT  : [215]
+               SPLIT  : [687]
+             MERGE  : [215] + [687] → [215, 687]
+           MERGE  : [364, 380] + [215, 687] → [215, 364, 380, 687]
+         MERGE  : [167, 374, 855] + [215, 364, 380, 687] → [167, 215, 364, 374, 380, 687, 855]
+       MERGE  : [104, 465, 651, 888, 947, 954] + [167, 215, 364, 374, 380, 687, 855] → [104, 167, 215, 364, 374, 380, 465, 651, 687, 855, 888, 947, 954]
+     MERGE  : [47, 72, 82, 197, 234, 297, 592, 678, 722, 792, 876, 978] + [104, 167, 215, 364, 374, 380, 465, 651, 687, 855, 888, 947, 954] → [47, 72, 82, 104, 167, 197, 215, 234, 297, 364, 374, 380, 465, 592, 651, 678, 687, 722, 792, 855, 876, 888, 947, 954, 978]
+   MERGE  : [45, 81, 95, 100, 128, 271, 301, 353, 368, 371, 388, 390, 471, 550, 566, 619, 634, 644, 748, 827, 850, 868, 883, 907, 990] + [47, 72, 82, 104, 167, 197, 215, 234, 297, 364, 374, 380, 465, 592, 651, 678, 687, 722, 792, 855, 876, 888, 947, 954, 978] → [45, 47, 72, 81, 82, 95, 100, 104, 128, 167, 197, 215, 234, 271, 297, 301, 353, 364, 368, 371, 374, 380, 388, 390, 465, 471, 550, 566, 592, 619, 634, 644, 651, 678, 687, 722, 748, 792, 827, 850, 855, 868, 876, 883, 888, 907, 947, 954, 978, 990]
+ MERGE  : [7, 26, 28, 31, 33, 90, 96, 105, 115, 143, 160, 164, 204, 221, 224, 226, 229, 239, 251, 282, 285, 345, 349, 430, 433, 460, 518, 559, 575, 604, 605, 617, 655, 666, 693, 715, 719, 734, 755, 759, 760, 778, 782, 826, 829, 891, 914, 964, 983, 986] + [45, 47, 72, 81, 82, 95, 100, 104, 128, 167, 197, 215, 234, 271, 297, 301, 353, 364, 368, 371, 374, 380, 388, 390, 465, 471, 550, 566, 592, 619, 634, 644, 651, 678, 687, 722, 748, 792, 827, 850, 855, 868, 876, 883, 888, 907, 947, 954, 978, 990] → [7, 26, 28, 31, 33, 45, 47, 72, 81, 82, 90, 95, 96, 100, 104, 105, 115, 128, 143, 160, 164, 167, 197, 204, 215, 221, 224, 226, 229, 234, 239, 251, 271, 282, 285, 297, 301, 345, 349, 353, 364, 368, 371, 374, 380, 388, 390, 430, 433, 460, 465, 471, 518, 550, 559, 566, 575, 592, 604, 605, 617, 619, 634, 644, 651, 655, 666, 678, 687, 693, 715, 719, 722, 734, 748, 755, 759, 760, 778, 782, 792, 826, 827, 829, 850, 855, 868, 876, 883, 888, 891, 907, 914, 947, 954, 964, 978, 983, 986, 990]
+Waktu Merge Sort (100 data): 0.00731890 detik
+=======================================================
+
+Hasil Merge Sort: [26, 105, 115, 143, 229, 251, 282, 655, 755, 760]
+Total step: 108
+Waktu Merge (10 data): 0.00052430 detik
+=======================================================
+Waktu Quick Sort (100 data): 0.00032570 detik
+Hasil Quick Sort (10 pertama): [7, 26, 28, 31, 33, 45, 47, 72, 81, 82]
+=======================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ========================</span>
+<span class="c1"># REKAP WAKTU SEMUA</span>
+<span class="c1"># ========================</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   REKAP WAKTU EKSEKUSI — 100 DATA&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Bubble Sort    : </span><span class="si">{</span><span class="n">waktu_bubble</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Selection Sort : </span><span class="si">{</span><span class="n">waktu_selection</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Insertion Sort : </span><span class="si">{</span><span class="n">waktu_insertion</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Merge Sort     : </span><span class="si">{</span><span class="n">waktu_merge_100</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Quick Sort     : </span><span class="si">{</span><span class="n">waktu_quick_100</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> detik&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Cari tercepat</span>
+<span class="n">hasil_waktu</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Bubble Sort&quot;</span>   <span class="p">:</span> <span class="n">waktu_bubble</span><span class="p">,</span>
+    <span class="s2">&quot;Selection Sort&quot;</span><span class="p">:</span> <span class="n">waktu_selection</span><span class="p">,</span>
+    <span class="s2">&quot;Insertion Sort&quot;</span><span class="p">:</span> <span class="n">waktu_insertion</span><span class="p">,</span>
+    <span class="s2">&quot;Merge Sort&quot;</span>    <span class="p">:</span> <span class="n">waktu_merge_100</span><span class="p">,</span>
+    <span class="s2">&quot;Quick Sort&quot;</span>    <span class="p">:</span> <span class="n">waktu_quick_100</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">tercepat</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">hasil_waktu</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">hasil_waktu</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">terlambat</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hasil_waktu</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">hasil_waktu</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   Tercepat  : </span><span class="si">{</span><span class="n">tercepat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Terlambat : </span><span class="si">{</span><span class="n">terlambat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+   REKAP WAKTU EKSEKUSI — 100 DATA
+==================================================
+  Bubble Sort    : 0.00094990 detik
+  Selection Sort : 0.00101400 detik
+  Insertion Sort : 0.00065380 detik
+  Merge Sort     : 0.00731890 detik
+  Quick Sort     : 0.00032570 detik
+==================================================
+
+   Tercepat  : Quick Sort
+  Terlambat : Merge Sort
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Struktur Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="25-196_Moh.Ghufron_Hashing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bubble-sort-selection-sort-insertion-sort-merge-sort-quick-sort">Bubble Sort | Selection Sort | Insertion Sort | Merge Sort | Quick Sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-random-urutan-ascending">100 Data Random, Urutan Ascending</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Moh. Ghufron
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
