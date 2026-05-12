@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'materi/hashing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -192,7 +194,23 @@
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Hashing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hashing</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="list.html">5. List</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
@@ -320,7 +338,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -336,6 +356,39 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hashing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#h-hashing">H. HASHING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h1-konsep-dasar">H1. Konsep Dasar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h2-collision-tabrakan">H2. Collision (Tabrakan)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-addressing-mencari-slot-kosong">1. Open Addressing (Mencari Slot Kosong)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-addressing-chaining">2. Closed Addressing (Chaining)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-hashing-dan-penanganan-collision">IMPLEMENTASI HASHING DAN PENANGANAN COLLISION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-linear-probing">1. STRATEGI: LINEAR PROBING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-quadratic-probing">2. STRATEGI: QUADRATIC PROBING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-chaining-closed-addressing">3. STRATEGI: CHAINING (CLOSED ADDRESSING)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">UJI COBA KODE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">==========================================</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -347,7 +400,170 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hashing">
 <h1>Hashing<a class="headerlink" href="#hashing" title="Link to this heading">#</a></h1>
-<p>Materi Hashing dengan Chaining Implementation.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="h-hashing">
+<h1>H. HASHING<a class="headerlink" href="#h-hashing" title="Link to this heading">#</a></h1>
+<p>[cite_start]<strong>Hashing</strong> adalah proses pembuatan indeks dan pengambilan data (elemen) dari sebuah struktur data untuk menyediakan cara pencarian yang jauh lebih cepat[cite: 4024]. Hashing bekerja dengan menggunakan sebuah fungsi matematika khusus yang disebut <strong>Hash Function</strong>.</p>
+<section id="h1-konsep-dasar">
+<h2>H1. Konsep Dasar<a class="headerlink" href="#h1-konsep-dasar" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[cite_start]<strong>Hash Function:</strong> Fungsi yang mengubah sebuah nilai (<em>Key</em>) menjadi angka indeks (<em>Hash Value</em>)[cite: 4032, 4033].</p></li>
+<li><p>[cite_start]<strong>Rumus Dasar:</strong> <code class="docutils literal notranslate"><span class="pre">Hash</span> <span class="pre">Value</span> <span class="pre">=</span> <span class="pre">Key</span> <span class="pre">%</span> <span class="pre">Ukuran_Tabel</span></code> (Nilai sisa bagi)[cite: 4037, 4041].</p></li>
+<li><p>[cite_start]<strong>Contoh:</strong> Jika ukuran tabel adalah 11, dan data yang masuk adalah <code class="docutils literal notranslate"><span class="pre">54</span></code>, maka indeksnya adalah <code class="docutils literal notranslate"><span class="pre">54</span> <span class="pre">%</span> <span class="pre">11</span> <span class="pre">=</span> <span class="pre">10</span></code>[cite: 4043]. Data <code class="docutils literal notranslate"><span class="pre">54</span></code> akan disimpan di laci ke-10.</p></li>
+</ul>
+</section>
+<section id="h2-collision-tabrakan">
+<h2>H2. Collision (Tabrakan)<a class="headerlink" href="#h2-collision-tabrakan" title="Link to this heading">#</a></h2>
+<p>[cite_start]<strong>Collision</strong> terjadi ketika dua data atau lebih menghasilkan <em>Hash Value</em> (indeks) yang sama[cite: 4042, 4045].</p>
+<ul class="simple">
+<li><p>Contoh: Data <code class="docutils literal notranslate"><span class="pre">77</span></code> dan <code class="docutils literal notranslate"><span class="pre">44</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">77</span> <span class="pre">%</span> <span class="pre">11</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">44</span> <span class="pre">%</span> <span class="pre">11</span> <span class="pre">=</span> <span class="pre">0</span></code>
+Keduanya berebut ingin masuk ke laci indeks ke-0.</p></li>
+</ul>
+</li>
+</ul>
+<p>Untuk mengatasi tabrakan ini, ada dua strategi utama:</p>
+<section id="open-addressing-mencari-slot-kosong">
+<h3>1. Open Addressing (Mencari Slot Kosong)<a class="headerlink" href="#open-addressing-mencari-slot-kosong" title="Link to this heading">#</a></h3>
+<p>[cite_start]Jika slot tujuan sudah penuh, algoritma akan mencari slot kosong lain di sebelahnya[cite: 4048].</p>
+<ul class="simple">
+<li><p>[cite_start]<strong>Linear Probing:</strong> Mencari slot kosong secara berurutan satu per satu (indeks + 1, indeks + 2, dst) hingga ketemu yang kosong[cite: 4049].</p></li>
+<li><p><strong>Quadratic Probing:</strong> Mencari slot kosong dengan lompatan jarak kuadrat (<span class="math notranslate nohighlight">\(h+1^2\)</span>, <span class="math notranslate nohighlight">\(h+2^2\)</span>, <span class="math notranslate nohighlight">\(h+3^2\)</span>, dst). [cite_start]Artinya melompat +1, +4, +9, +16 dari titik awal[cite: 4050]. Langkah ini membantu menyebar data agar tidak menumpuk di satu area.</p></li>
+</ul>
+</section>
+<section id="closed-addressing-chaining">
+<h3>2. Closed Addressing (Chaining)<a class="headerlink" href="#closed-addressing-chaining" title="Link to this heading">#</a></h3>
+<p>[cite_start]Daripada mencari laci kosong lain, strategi <strong>Chaining</strong> membiarkan beberapa data menumpuk di laci yang sama[cite: 4149, 4150]. Caranya adalah dengan mengubah setiap laci menjadi sebuah <em>List/Array</em> baru.</p>
+<ul class="simple">
+<li><p>[cite_start]Jika <code class="docutils literal notranslate"><span class="pre">77</span></code> dan <code class="docutils literal notranslate"><span class="pre">44</span></code> masuk ke indeks 0, maka isi indeks 0 menjadi list: <code class="docutils literal notranslate"><span class="pre">[77,</span> <span class="pre">44]</span></code>[cite: 4177].</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>==========================================<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementasi-hashing-dan-penanganan-collision">
+<h1>IMPLEMENTASI HASHING DAN PENANGANAN COLLISION<a class="headerlink" href="#implementasi-hashing-dan-penanganan-collision" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>==========================================<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>——————————————<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="strategi-linear-probing">
+<h1>1. STRATEGI: LINEAR PROBING<a class="headerlink" href="#strategi-linear-probing" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>——————————————<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<p>def insert_linear_probing(table, key):
+ukuran = len(table)
+indeks = key % ukuran</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Jika slot kosong, langsung masukkan
+if table[indeks] is None:
+    table[indeks] = key
+else:
+    # COLLISION! Lakukan Linear Probing (Maju 1 langkah berulang kali)
+    found = False
+    indeks_baru = (indeks + 1) % ukuran
+    
+    while not found and indeks_baru != indeks:
+        if table[indeks_baru] is None:
+            table[indeks_baru] = key
+            found = True
+        else:
+            indeks_baru = (indeks_baru + 1) % ukuran
+            
+    if not found:
+        print(f&quot;Tabel Penuh! Tidak bisa memasukkan {key}&quot;)
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>——————————————<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="strategi-quadratic-probing">
+<h1>2. STRATEGI: QUADRATIC PROBING<a class="headerlink" href="#strategi-quadratic-probing" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>——————————————<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<p>def insert_quadratic_probing(table, key):
+ukuran = len(table)
+indeks = key % ukuran</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if table[indeks] is None:
+    table[indeks] = key
+else:
+    # COLLISION! Lakukan Quadratic Probing (Lompat 1, 4, 9, 16...)
+    found = False
+    i = 1
+    
+    while not found and i &lt; ukuran:
+        indeks_baru = (indeks + (i * i)) % ukuran
+        if table[indeks_baru] is None:
+            table[indeks_baru] = key
+            found = True
+        else:
+            i += 1
+            
+    if not found:
+        print(f&quot;Gagal memposisikan {key} dengan Quadratic Probing&quot;)
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>——————————————<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="strategi-chaining-closed-addressing">
+<h1>3. STRATEGI: CHAINING (CLOSED ADDRESSING)<a class="headerlink" href="#strategi-chaining-closed-addressing" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>——————————————<a class="headerlink" href="#id8" title="Link to this heading">#</a></h1>
+<p>def insert_chaining(table, key):
+ukuran = len(table)
+indeks = key % ukuran
+# Langsung tambahkan ke dalam list di indeks tersebut (append)
+table[indeks].append(key)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id9">
+<h1>==========================================<a class="headerlink" href="#id9" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-kode">
+<h1>UJI COBA KODE<a class="headerlink" href="#uji-coba-kode" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id10">
+<h1>==========================================<a class="headerlink" href="#id10" title="Link to this heading">#</a></h1>
+<p>if <strong>name</strong> == “<strong>main</strong>”:
+# Data dari PDF Dosen
+data_uji = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+ukuran_tabel = 11</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Uji 1: Linear Probing
+tabel_linear = [None] * ukuran_tabel
+for data in data_uji:
+    insert_linear_probing(tabel_linear, data)
+print(&quot;Hasil Linear Probing :&quot;)
+print(tabel_linear)
+print(&quot;-&quot; * 50)
+
+# Uji 2: Quadratic Probing
+tabel_quadratic = [None] * ukuran_tabel
+for data in data_uji:
+    insert_quadratic_probing(tabel_quadratic, data)
+print(&quot;Hasil Quadratic Probing :&quot;)
+print(tabel_quadratic)
+print(&quot;-&quot; * 50)
+
+# Uji 3: Chaining
+# Buat tabel yang berisi list kosong [] di setiap slotnya
+tabel_chaining = [[] for _ in range(ukuran_tabel)]
+for data in data_uji:
+    insert_chaining(tabel_chaining, data)
+print(&quot;Hasil Chaining :&quot;)
+print(tabel_chaining)
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -404,6 +620,48 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hashing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#h-hashing">H. HASHING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h1-konsep-dasar">H1. Konsep Dasar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h2-collision-tabrakan">H2. Collision (Tabrakan)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-addressing-mencari-slot-kosong">1. Open Addressing (Mencari Slot Kosong)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-addressing-chaining">2. Closed Addressing (Chaining)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-hashing-dan-penanganan-collision">IMPLEMENTASI HASHING DAN PENANGANAN COLLISION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-linear-probing">1. STRATEGI: LINEAR PROBING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-quadratic-probing">2. STRATEGI: QUADRATIC PROBING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-chaining-closed-addressing">3. STRATEGI: CHAINING (CLOSED ADDRESSING)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">——————————————</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">==========================================</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">UJI COBA KODE</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">==========================================</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
