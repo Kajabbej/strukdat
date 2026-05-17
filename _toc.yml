@@ -12,7 +12,8 @@ parts:
     - file: materi/hashing
       title: 4. Hashing
     - file: materi/list
-      title: 5. List
+      title: 5. Linked List
+      
 
   - caption: Tugas
     chapters:
@@ -22,3 +23,6 @@ parts:
       title: 2. Sorting
     - file: 25-196_Moh.Ghufron_Hashing
       title: 3. Hashing
+    - file: 25-196_Moh.Ghufron_Unordered & Ordered Insert 
+      title: 4. Linked list
+    
