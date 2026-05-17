@@ -23,6 +23,6 @@ parts:
       title: 2. Sorting
     - file: 25-196_Moh.Ghufron_Hashing
       title: 3. Hashing
-    - file: 25-196_Moh.Ghufron_Unordered & Ordered Insert 
+    - file: 25-196_Moh.Ghufron_Unordered_Ordered_Insert
       title: 4. Linked list
     
