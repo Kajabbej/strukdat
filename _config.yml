@@ -12,6 +12,8 @@ parse:
     - colon_fence
     - substitution
     - linkify
+    - html_admonition
+    - html_image
 
 html:
   use_issues_button: false
