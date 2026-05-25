@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Struktur Data &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>Struktur Data — Catatan Belajar &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -144,14 +144,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/logo.png" class="logo__image only-light" alt="Struktur Data - Moh. Ghufron - Home"/>
-    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Struktur Data - Moh. Ghufron - Home"/>
   
+    <p class="title logo__title">Struktur Data - Moh. Ghufron</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -167,7 +161,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Struktur Data
+                    Struktur Data — Catatan Belajar
                 </a>
             </li>
         </ul>
@@ -212,10 +206,11 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="materi/list.html">5. List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materi/list.html">5. Linked List</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="materi/tugas-stack.html">1. Stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="25-196_Moh.Ghufron_Shorting.html">2. Sorting</a></li>
 </ul>
 
@@ -352,7 +347,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Struktur Data</h1>
+    <h1>Struktur Data — Catatan Belajar</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,7 +357,6 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materi">Materi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">Tugas</a></li>
 </ul>
             </nav>
@@ -375,11 +369,411 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="struktur-data">
-<h1>Struktur Data<a class="headerlink" href="#struktur-data" title="Link to this heading">#</a></h1>
-<p>Selamat datang di catatan belajar <strong>Struktur Data</strong> oleh Moh. Ghufron_25-296_semester II</p>
-<section id="materi">
-<h2>Materi<a class="headerlink" href="#materi" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="struktur-data-catatan-belajar">
+<h1>Struktur Data — Catatan Belajar<a class="headerlink" href="#struktur-data-catatan-belajar" title="Link to this heading">#</a></h1>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
+
+.profile-wrapper {
+  font-family: 'DM Sans', sans-serif;
+  max-width: 860px;
+  margin: 2rem auto;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #111314 0%, #1e2328 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  color: #E8EAED;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-header::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(200,169,110,0.06);
+  pointer-events: none;
+}
+
+.profile-header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(155,164,174,0.05);
+  pointer-events: none;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.badge-semester {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(200,169,110,0.15);
+  color: #C8A96E;
+  border: 0.5px solid rgba(200,169,110,0.3);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #E8EAED;
+  margin: 0 0 0.25rem;
+  line-height: 1.2;
+}
+
+.header-sub {
+  font-size: 13px;
+  color: #8A9099;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.divider-gold {
+  width: 48px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #C8A96E, transparent);
+  margin: 1rem 0;
+}
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .header-title { font-size: 1.5rem; }
+}
+
+.profile-card {
+  background: #fff;
+  border: 0.5px solid #E2E4E7;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
+}
+
+.profile-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+}
+
+.card-top {
+  padding: 1.5rem 1.5rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.photo-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2C3036, #111314);
+  border: 2.5px solid #E2E4E7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photo-placeholder {
+  font-size: 11px;
+  color: #9BA4AE;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 6px;
+}
+
+.card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1D20;
+  margin: 0 0 3px;
+}
+
+.card-role {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9BA4AE;
+  margin: 0 0 6px;
+}
+
+.card-nim {
+  font-size: 12px;
+  color: #5A6370;
+  font-family: 'DM Sans', monospace;
+  background: #F4F5F6;
+  padding: 2px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin: 0;
+}
+
+.card-divider {
+  height: 0.5px;
+  background: #F0F1F3;
+  margin: 0;
+}
+
+.card-info {
+  padding: 1rem 1.5rem 1.25rem;
+}
+
+.info-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.info-row:last-child { margin-bottom: 0; }
+
+.info-label {
+  font-size: 11px;
+  color: #9BA4AE;
+  min-width: 100px;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 12px;
+  color: #1A1D20;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ACADEMIC CARD */
+.academic-card {
+  background: #fff;
+  border: 0.5px solid #E2E4E7;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.academic-header {
+  background: linear-gradient(135deg, #111314, #1e2328);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.academic-title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #C8A96E;
+  margin: 0;
+}
+
+.academic-body {
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .academic-body { grid-template-columns: 1fr; }
+}
+
+.academic-item {}
+
+.academic-item-label {
+  font-size: 10px;
+  color: #9BA4AE;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 3px;
+}
+
+.academic-item-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1A1D20;
+  margin: 0;
+}
+
+.tag-matkul {
+  display: inline-block;
+  background: linear-gradient(135deg, #111314, #2C3036);
+  color: #C8A96E;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-top: 2px;
+}
+
+/* FOOTER NOTE */
+.footer-note {
+  text-align: center;
+  font-size: 11px;
+  color: #9BA4AE;
+  margin-top: 1.25rem;
+  letter-spacing: 0.06em;
+}
+</style>
+<div class="profile-wrapper">
+  <div class="profile-header">
+    <div class="header-top">
+      <span class="badge-semester">Semester Genap 2025/2026</span>
+    </div>
+    <h2 class="header-title">Catatan Belajar<br>Struktur Data</h2>
+    <div class="divider-gold"></div>
+    <p class="header-sub">S1 Teknik Informatika &nbsp;·&nbsp; Universitas Trunojoyo Madura &nbsp;·&nbsp; Semester II</p>
+  </div>
+  <div class="card-grid">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{raw} html
+</pre></div>
+</div>
+<div class="profile-card">
+  <div class="card-top">
+    <div class="photo-circle">
+      <span style="font-size:28px;">🎓</span>
+    </div>
+    <div>
+      <p class="card-role">Mahasiswa</p>
+      <p class="card-name">Moh. Ghufron</p>
+      <p class="card-nim">250411100196</p>
+    </div>
+  </div>
+  <div class="card-divider"></div>
+  <div class="card-info">
+    <div class="info-row">
+      <span class="info-label">Nama Panggil</span>
+      <span class="info-value">Ghufron</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Fakultas</span>
+      <span class="info-value">Teknik / Informatika</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Program Studi</span>
+      <span class="info-value">S1 Teknik Informatika</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">TTL</span>
+      <span class="info-value">Bangkalan, 18 Desember 2005</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Agama</span>
+      <span class="info-value">Islam</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Domisili</span>
+      <span class="info-value">Telang, Kamal, Bangkalan</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">WhatsApp</span>
+      <span class="info-value">085189374748</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Email</span>
+      <span class="info-value">humas@trunojoyo.ac.id</span>
+    </div>
+  </div>
+</div>
+<div class="profile-card">
+  <div class="card-top">
+    <div class="photo-circle">
+      <span style="font-size:28px;">👩‍🏫</span>
+    </div>
+    <div>
+      <p class="card-role">Dosen Pengampu</p>
+      <p class="card-name">Dr. Arik Kurniawati<br>S.Kom., M.T</p>
+      <p class="card-nim">197803092003122009</p>
+    </div>
+  </div>
+  <div class="card-divider"></div>
+  <div class="card-info">
+    <div class="info-row">
+      <span class="info-label">NIP / NIDN</span>
+      <span class="info-value">197803092003122009</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Jabatan</span>
+      <span class="info-value">Dosen Pengampu Struktur Data</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Jadwal Bimbingan</span>
+      <span class="info-value">Setiap Selasa, 13:00 WIB</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">No. Telepon</span>
+      <span class="info-value">—</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Email Dosen</span>
+      <span class="info-value">—</span>
+    </div>
+  </div>
+</div>
+```
+  </div>
+  <div class="academic-card">
+    <div class="academic-header">
+      <span style="font-size:16px;">📋</span>
+      <p class="academic-title">Data Akademik</p>
+    </div>
+    <div class="academic-body">
+      <div class="academic-item">
+        <p class="academic-item-label">Mata Kuliah</p>
+        <span class="tag-matkul">Struktur Data</span>
+      </div>
+      <div class="academic-item">
+        <p class="academic-item-label">Periode Semester</p>
+        <p class="academic-item-value">Genap 2025/2026</p>
+      </div>
+      <div class="academic-item">
+        <p class="academic-item-label">Jadwal Bimbingan</p>
+        <p class="academic-item-value">Selasa, 13:00 WIB</p>
+      </div>
+    </div>
+  </div>
+  <p class="footer-note">Catatan ini dibuat sebagai dokumentasi belajar pribadi &nbsp;·&nbsp; Universitas Trunojoyo Madura</p>
+</div> 
+## Materi
 <ol class="arabic simple">
 <li><p>Stack &amp; Queue</p></li>
 <li><p>Infix, Prefix, dan Postfix</p></li>
@@ -387,7 +781,6 @@
 <li><p>Hashing</p></li>
 <li><p>List</p></li>
 </ol>
-</section>
 <section id="tugas">
 <h2>Tugas<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -460,7 +853,6 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materi">Materi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">Tugas</a></li>
 </ul>
   </nav></div>
