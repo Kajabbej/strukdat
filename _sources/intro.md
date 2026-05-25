@@ -4,8 +4,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 .profile-wrapper { font-family: 'DM Mono', monospace; max-width: 820px; margin: 2rem auto; }
-.hero { background: #fff700; border-radius: 20px; padding: 2.5rem; margin-bottom: 1.25rem; }
-.hero-tag { display: inline-block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #00dada; background: rgba(200,169,110,0.1); border: 0.5px solid rgba(200,169,110,0.25); padding: 5px 14px; border-radius: 999px; margin-bottom: 1.25rem; }
+.hero { background: #12120d; border-radius: 20px; padding: 2.5rem; margin-bottom: 1.25rem; }
+.hero-tag { display: inline-block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #C8A96E; background: rgba(200,169,110,0.1); border: 0.5px solid rgba(200,169,110,0.25); padding: 5px 14px; border-radius: 999px; margin-bottom: 1.25rem; }
 .hero-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #F7F5F0; line-height: 1.15; margin-bottom: 0.75rem; }
 .hero-title span { color: #C8A96E; }
 .hero-line { width: 40px; height: 2px; background: linear-gradient(90deg, #C8A96E, transparent); margin-bottom: 0.75rem; }
