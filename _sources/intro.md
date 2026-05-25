@@ -1,5 +1,4 @@
 #  Struktur Data — Catatan Belajar
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
 
@@ -85,7 +84,6 @@
   margin: 1rem 0;
 }
 
-/* CARD GRID */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -209,7 +207,6 @@
   line-height: 1.5;
 }
 
-/* ACADEMIC CARD */
 .academic-card {
   background: #fff;
   border: 0.5px solid #E2E4E7;
@@ -274,7 +271,6 @@
   margin-top: 2px;
 }
 
-/* FOOTER NOTE */
 .footer-note {
   text-align: center;
   font-size: 11px;
@@ -295,97 +291,93 @@
     <p class="header-sub">S1 Teknik Informatika &nbsp;·&nbsp; Universitas Trunojoyo Madura &nbsp;·&nbsp; Semester II</p>
   </div>
 
-
   <div class="card-grid">
 
-   
-    ```{raw} html
-<div class="profile-card">
-  <div class="card-top">
-    <div class="photo-circle">
-      <span style="font-size:28px;">🎓</span>
+    <div class="profile-card">
+      <div class="card-top">
+        <div class="photo-circle">
+          <span style="font-size:28px;">🎓</span>
+        </div>
+        <div>
+          <p class="card-role">Mahasiswa</p>
+          <p class="card-name">Moh. Ghufron</p>
+          <p class="card-nim">250411100196</p>
+        </div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-info">
+        <div class="info-row">
+          <span class="info-label">Nama Panggil</span>
+          <span class="info-value">Ghufron</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Fakultas</span>
+          <span class="info-value">Teknik / Informatika</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Program Studi</span>
+          <span class="info-value">S1 Teknik Informatika</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">TTL</span>
+          <span class="info-value">Bangkalan, 18 Desember 2005</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Agama</span>
+          <span class="info-value">Islam</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Domisili</span>
+          <span class="info-value">Telang, Kamal, Bangkalan</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">WhatsApp</span>
+          <span class="info-value">085189374748</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value">humas@trunojoyo.ac.id</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <p class="card-role">Mahasiswa</p>
-      <p class="card-name">Moh. Ghufron</p>
-      <p class="card-nim">250411100196</p>
-    </div>
-  </div>
-  <div class="card-divider"></div>
-  <div class="card-info">
-    <div class="info-row">
-      <span class="info-label">Nama Panggil</span>
-      <span class="info-value">Ghufron</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Fakultas</span>
-      <span class="info-value">Teknik / Informatika</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Program Studi</span>
-      <span class="info-value">S1 Teknik Informatika</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">TTL</span>
-      <span class="info-value">Bangkalan, 18 Desember 2005</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Agama</span>
-      <span class="info-value">Islam</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Domisili</span>
-      <span class="info-value">Telang, Kamal, Bangkalan</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">WhatsApp</span>
-      <span class="info-value">085189374748</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Email</span>
-      <span class="info-value">humas@trunojoyo.ac.id</span>
-    </div>
-  </div>
-</div>
 
-<div class="profile-card">
-  <div class="card-top">
-    <div class="photo-circle">
-      <span style="font-size:28px;">👩‍🏫</span>
+    <div class="profile-card">
+      <div class="card-top">
+        <div class="photo-circle">
+          <span style="font-size:28px;">👩‍🏫</span>
+        </div>
+        <div>
+          <p class="card-role">Dosen Pengampu</p>
+          <p class="card-name">Dr. Arik Kurniawati<br>S.Kom., M.T</p>
+          <p class="card-nim">197803092003122009</p>
+        </div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-info">
+        <div class="info-row">
+          <span class="info-label">NIP / NIDN</span>
+          <span class="info-value">197803092003122009</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Jabatan</span>
+          <span class="info-value">Dosen Pengampu Struktur Data</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Jadwal Bimbingan</span>
+          <span class="info-value">Setiap Selasa, 13:00 WIB</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">No. Telepon</span>
+          <span class="info-value">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email Dosen</span>
+          <span class="info-value">—</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <p class="card-role">Dosen Pengampu</p>
-      <p class="card-name">Dr. Arik Kurniawati<br>S.Kom., M.T</p>
-      <p class="card-nim">197803092003122009</p>
-    </div>
-  </div>
-  <div class="card-divider"></div>
-  <div class="card-info">
-    <div class="info-row">
-      <span class="info-label">NIP / NIDN</span>
-      <span class="info-value">197803092003122009</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Jabatan</span>
-      <span class="info-value">Dosen Pengampu Struktur Data</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Jadwal Bimbingan</span>
-      <span class="info-value">Setiap Selasa, 13:00 WIB</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">No. Telepon</span>
-      <span class="info-value">—</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Email Dosen</span>
-      <span class="info-value">—</span>
-    </div>
-  </div>
-</div>
-```
-  </div>
 
+  </div>
 
   <div class="academic-card">
     <div class="academic-header">
@@ -410,7 +402,7 @@
 
   <p class="footer-note">Catatan ini dibuat sebagai dokumentasi belajar pribadi &nbsp;·&nbsp; Universitas Trunojoyo Madura</p>
 
-</div> 
+</div>
 ## Materi
 
 1. Stack & Queue
