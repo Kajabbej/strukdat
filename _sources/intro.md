@@ -1,7 +1,7 @@
 #  Struktur Data — Catatan Belajar
 ```{raw} html
 <iframe
-  src="../profil.html"
+  src="Profile.html"
   width="100%"
   height="750px"
   frameborder="0"
