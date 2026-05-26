@@ -15,6 +15,11 @@ parse:
     - html_admonition
     - html_image
 
+sphinx:
+  config:
+    html_allow_unicode: true
+    html_force_compact_title: false
+
 html:
   use_issues_button: false
   use_repository_button: false

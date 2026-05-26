@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Notebooks with MyST Markdown &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>Definition &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -60,7 +60,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown-notebooks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -268,7 +268,7 @@
       
       
       
-      <li><a href="_sources/markdown-notebooks.md" target="_blank"
+      <li><a href="_sources/Untitled.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -344,7 +344,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notebooks with MyST Markdown</h1>
+    <h1>Definition</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -354,10 +354,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Definition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -368,46 +368,86 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notebooks-with-myst-markdown">
-<h1>Notebooks with MyST Markdown<a class="headerlink" href="#notebooks-with-myst-markdown" title="Link to this heading">#</a></h1>
-<p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.</p>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Link to this heading">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="definition">
+<h1>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h1>
+<p>Tree dan Binary Tree
+tree adalah strukturdata yang berupa non linier, macam macam bentuk Tree yaitu ada root , leaves, branches, dan jika secara biologi akar / root terlatk di bagian paling bawah, di bidang treee sciense akar/ root itu terlatak diatas sedangkan daun/leaves dan cabang cabngnya itu berada  dibawah akarnya.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tree">
+<h1>Tree<a class="headerlink" href="#tree" title="Link to this heading">#</a></h1>
+<p>Tree — Bukan Pohon Biasa
+Kalau kamu pernah lihat struktur folder di Windows Explorer, kamu sudah paham Tree. Itu bukan kebetulan — struktur direktori komputer memang dimodelkan sebagai Tree.
+Bedanya dengan pohon di alam nyata cuma satu hal: di dunia nyata akar ada di bawah, di CS akar ada di atas. Sisanya sama — ada akar, cabang, dan daun.
+Istilah yang wajib hafal
+Dari PDF ini, ada beberapa istilah yang bakal terus muncul di mata kuliah Struktur Data:
+Node — kotak yang menyimpan data. Kalau kamu lihat diagram tree, setiap kotak itu adalah node.
+Edge — garis penghubung antar node. Satu node hanya bisa punya satu edge masuk, tapi bisa punya banyak edge keluar.
+Root — node paling atas. Tidak ada edge yang masuk ke sini. Ini titik awal semua traversal.
+Path — urutan node dari root sampai tujuan.
+Parent &amp; Children — hubungan langsung. Node C: adalah parent dari Program Files, Users, Windows. Ketiga itu children-nya.
+Siblings — node-node yang parent-nya sama.
+Leaf node — node yang tidak punya children sama sekali. Ujung jalan buntu di tree.
+Level — Root itu level 0. Semakin dalam, levelnya makin besar.
+Height — level tertinggi yang ada di tree itu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sebuah tree terdiri dari root + nol atau lebih subtree. Dan setiap subtree itu... juga tree. Ini bukan definisi melingkar yang nggak berguna — justru inilah kenapa hampir semua algoritma tree ditulis secara rekursif.
+
+Binary Tree — Tree dengan Aturan Ketat
+</pre></div>
+</div>
+<p>Binary Tree adalah Tree yang setiap node-nya maksimal punya dua children: kiri dan kanan. Tidak lebih.
+Implementasinya di Python pakai class, karena setiap node perlu menyimpan tiga hal: nilai (key), pointer ke child kiri, dan pointer ke child kanan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">BinaryTree</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
-</section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Link to this heading">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="arabic simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
-</section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Link to this heading">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
+<p>Metode insertLeft perlu dicek dulu: apakah leftChild sudah ada atau belum?
+Kalau kosong, langsung pasang:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">BinaryTree</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
+</div>
+</div>
+<p>Kalau sudah ada isinya, urutannya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">BinaryTree</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
+ <span class="c1"># selamatkan dulu node lama</span>
+<span class="n">t</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span> 
+ <span class="c1"># baru ganti pointer</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">t</span>           
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kalau urutannya dibalik — pasang dulu baru selamatkan — node lama langsung hilang karena tidak ada pointer yang menunjuk ke sana. PDF ini menggambarkannya di Gambar 5, dan ini adalah jenis bug yang tidak akan kasih error, tapi bikin data hilang diam-diam. Yang paling bahaya.
+insertRight logikanya identik, hanya ke sisi kanan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method tambahan</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getLeftChild</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getRightChild</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getRootVal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setRootVal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -458,10 +498,10 @@ See the YAML at the top of this page for example.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Definition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tree">Tree</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

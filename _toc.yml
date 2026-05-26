@@ -18,11 +18,9 @@ parts:
     chapters:
     - file: materi/tugas-stack
       title: 1. Stack
-    - file: 25-196_Moh.Ghufron_Shorting
+    - file: tugas/25-196_Moh.Ghufron_Shorting
       title: 2. Sorting
-    - file: 25-196_Moh.Ghufron_Hashing
+    - file: tugas/25-196_Moh.Ghufron_Hashing
       title: 3. Hashing
-    - file: 25-196_Moh.Ghufron_Unordered_Ordered_Insert
+    - file: tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert
       title: 4. Linked list
-
-      
