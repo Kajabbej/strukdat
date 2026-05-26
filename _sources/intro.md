@@ -42,7 +42,9 @@
   <div class="card-grid">
     <div class="profile-card">
       <div class="card-header">
-        <div class="avatar">🎓</div>
+        <div class="avatar">
+          <img src="images/logo.png" alt="Foto Ghufron">
+        </div>
         <div>
           <p class="c-role">Mahasiswa</p>
           <p class="c-name">Moh. Ghufron</p>
