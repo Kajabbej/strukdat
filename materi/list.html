@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -209,6 +209,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tugas-stack.html">1. Stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Shorting.html">2. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
 </ul>
 
     </div>
@@ -331,7 +334,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -347,6 +352,26 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-harus-linked-list">1. Kenapa Harus Linked List?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama-node">2. Komponen Utama: Node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-list-head">3. Linked List &amp; Head</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-penting-aturan-mainnya">4. Operasi Penting &amp; Aturan Mainnya</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-nambah-data-add">A. Nambah Data (<code class="docutils literal notranslate"><span class="pre">add</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-jalan-jalan-traversal-size-search-display">B. Jalan-jalan / Traversal (<code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">display</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-menghapus-data-remove">C. Menghapus Data (<code class="docutils literal notranslate"><span class="pre">remove</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordered-list-list-terurut">5. Ordered List (List Terurut)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keseluruhan-code">keseluruhan Code</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -358,7 +383,179 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linked">
 <h1>linked<a class="headerlink" href="#linked" title="Link to this heading">#</a></h1>
-<p>materi akan menyusul</p>
+<section id="kenapa-harus-linked-list">
+<h2>1. Kenapa Harus Linked List?<a class="headerlink" href="#kenapa-harus-linked-list" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[cite_start]<strong>Problem:</strong> List bawaan Python itu dinamis, ukurannya bisa berubah-ubah[cite: 203, 204]. [cite_start]Tapi di bahasa pemrograman lain, ukuran <em>array/list</em> biasanya kaku (harus dipesan di awal)[cite: 206].</p></li>
+<li><p>[cite_start]<strong>Solusi:</strong> Bikin struktur data sendiri yang ukurannya bebas memanjang/memendek saat program jalan, namanya <strong>Linked List</strong>[cite: 206].</p></li>
+<li><p>[cite_start]Karena datanya nyebar di memori (nggak berurutan), kita butuh “penunjuk jalan” biar data satu dan lainnya tetap nyambung[cite: 214, 230].</p></li>
+</ul>
+<section id="komponen-utama-node">
+<h3>2. Komponen Utama: Node<a class="headerlink" href="#komponen-utama-node" title="Link to this heading">#</a></h3>
+<p>Node itu ibarat gerbong kereta. [cite_start]Di dalam satu gerbong (Node), pasti ada dua informasi[cite: 235, 236]:</p>
+<ol class="arabic simple">
+<li><p>[cite_start]<strong>Data:</strong> Isi nilainya (misal angka 93)[cite: 247, 251].</p></li>
+<li><p>[cite_start]<strong>Next:</strong> <em>Pointer</em> / penunjuk ke gerbong selanjutnya[cite: 252]. [cite_start]Kalau dia gerbong terakhir, <code class="docutils literal notranslate"><span class="pre">next</span></code>-nya berisi <code class="docutils literal notranslate"><span class="pre">None</span></code> (Ground/Nil)[cite: 247, 252].</p></li>
+</ol>
+<p><strong>Method Wajib di Node:</strong></p>
+<ul class="simple">
+<li><p>[cite_start]<code class="docutils literal notranslate"><span class="pre">getData()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setData()</span></code>: Buat ngambil dan ngubah isi datanya[cite: 239, 241].</p></li>
+<li><p>[cite_start]<code class="docutils literal notranslate"><span class="pre">getNext()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setNext()</span></code>: Buat ngambil dan ngubah penunjuk ke node selanjutnya[cite: 240, 242].</p></li>
+</ul>
+</section>
+<section id="linked-list-head">
+<h3>3. Linked List &amp; Head<a class="headerlink" href="#linked-list-head" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>[cite_start]Linked List itu kumpulan gerbong (node) tadi[cite: 280].</p></li>
+<li><p>Biar keretanya bisa jalan, kita wajib tahu mana lokomotif awalnya. [cite_start]Di sini namanya <strong><code class="docutils literal notranslate"><span class="pre">Head</span></code></strong>[cite: 231, 281].</p></li>
+<li><p>[cite_start]Kalau <code class="docutils literal notranslate"><span class="pre">Head</span></code> masih berisi <code class="docutils literal notranslate"><span class="pre">None</span></code>, berarti keretanya (Linked List) masih kosong melompong[cite: 286, 288].</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="operasi-penting-aturan-mainnya">
+<h3>4. Operasi Penting &amp; Aturan Mainnya<a class="headerlink" href="#operasi-penting-aturan-mainnya" title="Link to this heading">#</a></h3>
+<section id="a-nambah-data-add">
+<h4>A. Nambah Data (<code class="docutils literal notranslate"><span class="pre">add</span></code>)<a class="headerlink" href="#a-nambah-data-add" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>[cite_start]Data baru <em>default</em>-nya selalu ditambahin di <strong>paling depan</strong> (nempel ke Head)[cite: 313].</p></li>
+<li><p><strong>Aturan Nambah Data (JANGAN KEBALIK!):</strong></p>
+<ol class="arabic simple">
+<li><p>[cite_start]Node baru suruh nunjuk ke node lama (yang lagi dipegang Head)[cite: 315].</p></li>
+<li><p>[cite_start]Baru Head-nya disuruh pegang node baru tersebut[cite: 316].
+[cite_start]<em>💡 Kalau Head-nya duluan yang dipindah, sisa gerbong di belakangnya bakal putus dan hilang dari memori!</em> [cite: 327]</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="b-jalan-jalan-traversal-size-search-display">
+<h4>B. Jalan-jalan / Traversal (<code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">display</span></code>)<a class="headerlink" href="#b-jalan-jalan-traversal-size-search-display" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Kita nggak bisa langsung loncat ke node ke-5. [cite_start]Harus jalan dari Head satu per satu pakai bantuan pointer <code class="docutils literal notranslate"><span class="pre">current</span></code>[cite: 380].</p></li>
+<li><p>[cite_start]Caranya: <code class="docutils literal notranslate"><span class="pre">current</span> <span class="pre">=</span> <span class="pre">current.getNext()</span></code> (geser terus sampai ketemu data yang dicari atau sampai nilainya <code class="docutils literal notranslate"><span class="pre">None</span></code>)[cite: 384, 385, 418].</p></li>
+</ul>
+</section>
+<section id="c-menghapus-data-remove">
+<h4>C. Menghapus Data (<code class="docutils literal notranslate"><span class="pre">remove</span></code>)<a class="headerlink" href="#c-menghapus-data-remove" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Ini agak <em>tricky</em>. [cite_start]Kita butuh dua tangan (pointer): <code class="docutils literal notranslate"><span class="pre">current</span></code> (buat nyari target) dan <code class="docutils literal notranslate"><span class="pre">previous</span></code> (buat ngikutin dari belakang)[cite: 517, 518].</p></li>
+<li><p>[cite_start]Kalau target ketemu, node sebelumnya (<code class="docutils literal notranslate"><span class="pre">previous</span></code>) langsung disambungin ke node sesudahnya target[cite: 516, 518]. Otomatis targetnya bakal terputus dan kehapus!</p></li>
+<li><p>[cite_start]<strong>Pengecualian:</strong> Kalau yang dihapus itu node pertama (Head), tinggal geser aja Head-nya ke node kedua[cite: 557].</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ordered-list-list-terurut">
+<h3>5. Ordered List (List Terurut)<a class="headerlink" href="#ordered-list-list-terurut" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>[cite_start]Ini versi <em>upgrade</em>[cite: 654]. [cite_start]Datanya selalu diurutkan dari kecil ke besar setiap kali ada data masuk[cite: 655].</p></li>
+<li><p>[cite_start]<strong>Keuntungannya:</strong> Nyari data jadi jauh lebih cepet[cite: 653].</p></li>
+<li><p>[cite_start]Kalau kita nyari angka 10 tapi <em>current</em> udah nyentuh angka 15, pencarian langsung berhenti (<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">=</span> <span class="pre">True</span></code>), gak perlu repot ngecek sampai belakang[cite: 653, 701].</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="keseluruhan-code">
+<h3>keseluruhan Code<a class="headerlink" href="#keseluruhan-code" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">init_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getNext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newdata</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">newdata</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setNext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_next</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_next</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LinkedList</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">temp</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">temp</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">getData</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; -&gt; &quot;</span><span class="p">)</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">getNext</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ==========================================</span>
+    <span class="c1"># JAWABAN LATIHAN: insertNext &amp; insertPrevious</span>
+    <span class="c1"># ==========================================</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertNext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_cari</span><span class="p">,</span> <span class="n">item_baru</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nyelipin node baru SETELAH node tertentu&quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="c1"># Cari dulu nodenya</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">current</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="o">==</span> <span class="n">item_cari</span><span class="p">:</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">getNext</span><span class="p">()</span>
+                
+        <span class="k">if</span> <span class="n">found</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">item_baru</span><span class="p">)</span>
+            <span class="c1"># Node baru nunjuk ke tetangga kanannya current</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">getNext</span><span class="p">())</span>
+            <span class="c1"># Current nunjuk ke node baru</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data </span><span class="si">{</span><span class="n">item_cari</span><span class="si">}</span><span class="s2"> tidak ditemukan!&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertPrevious</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_cari</span><span class="p">,</span> <span class="n">item_baru</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nyelipin node baru SEBELUM node tertentu&quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">current</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="o">==</span> <span class="n">item_cari</span><span class="p">:</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">previous</span> <span class="o">=</span> <span class="n">current</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">getNext</span><span class="p">()</span>
+                
+        <span class="k">if</span> <span class="n">found</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">item_baru</span><span class="p">)</span>
+            <span class="c1"># Kalau targetnya ada di paling depan (Head)</span>
+            <span class="k">if</span> <span class="n">previous</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">temp</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">temp</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Nyelip di tengah</span>
+                <span class="n">temp</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+                <span class="n">previous</span><span class="o">.</span><span class="n">setNext</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data </span><span class="si">{</span><span class="n">item_cari</span><span class="si">}</span><span class="s2"> tidak ditemukan!&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- TEST DRIVE JAWABAN LATIHAN ---</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== TESTING LINKED LIST ===&quot;</span><span class="p">)</span>
+    <span class="n">mylist</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">()</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="c1"># Urutan saat ini: 70 -&gt; 34 -&gt; 45 -&gt; None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kondisi Awal:&quot;</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Insert 99 SETELAH 34:&quot;</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">insertNext</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Insert 11 SEBELUM 45:&quot;</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">insertPrevious</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+    <span class="n">mylist</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -415,6 +612,35 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kenapa-harus-linked-list">1. Kenapa Harus Linked List?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama-node">2. Komponen Utama: Node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-list-head">3. Linked List &amp; Head</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-penting-aturan-mainnya">4. Operasi Penting &amp; Aturan Mainnya</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-nambah-data-add">A. Nambah Data (<code class="docutils literal notranslate"><span class="pre">add</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-jalan-jalan-traversal-size-search-display">B. Jalan-jalan / Traversal (<code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">display</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-menghapus-data-remove">C. Menghapus Data (<code class="docutils literal notranslate"><span class="pre">remove</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordered-list-list-terurut">5. Ordered List (List Terurut)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keseluruhan-code">keseluruhan Code</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
