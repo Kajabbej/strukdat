@@ -24,3 +24,5 @@ parts:
       title: 3. Hashing
     - file: tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert
       title: 4. Linked list
+    - file: tugas/25-196_Moh.Ghufron_Tree.ipynb
+      title: 5. Tree
