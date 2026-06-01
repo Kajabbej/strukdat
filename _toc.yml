@@ -13,6 +13,8 @@ parts:
       title: 4. Hashing
     - file: materi/list
       title: 5. Linked List
+    - file: tree
+      title: 6. materi/tree
 
   - caption: Tugas
     chapters:
@@ -24,5 +26,5 @@ parts:
       title: 3. Hashing
     - file: tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert
       title: 4. Linked list
-    - file: tugas/25-196_Moh.Ghufron_Tree.ipynb
+    - file: tugas/25-196_Moh.Ghufron_Tree
       title: 5. Tree
