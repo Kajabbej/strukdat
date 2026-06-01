@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>Tugas 4: Linked List &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="25-196_Moh.Ghufron_Tree.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="25-196_Moh.Ghufron_Hashing.html" />
+    <link rel="next" title="Tugas 5: Visualisasi dan Operasi Tree" href="25-196_Moh.Ghufron_Tree.html" />
+    <link rel="prev" title="Tugas 3: Pencarian Data dengan Hashing" href="25-196_Moh.Ghufron_Hashing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -206,9 +206,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../materi/list.html">5. Linked List</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../materi/tugas-stack.html">1. Stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="25-196_Moh.Ghufron_Shorting.html">2. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Linked list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
 </ul>
 
     </div>
@@ -331,9 +334,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -344,19 +345,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Tugas 4: Linked List</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -366,7 +359,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-4-linked-list">
+<h1>Tugas 4: Linked List<a class="headerlink" href="#tugas-4-linked-list" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
 <span class="c1">#  Linked List — Unordered &amp; Ordered Insert</span>
@@ -572,43 +567,8 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=======================================================
-UNORDERED LIST
-=======================================================
-
-Case 1 — target ditemukan (18 ada di list):
-  Sebelum:   Head --&gt; 7 --&gt; 18 --&gt; 6 --&gt; None
-  [FOUND] 18 ditemukan → sisipkan 18 setelah node 18
-  Sesudah:   Head --&gt; 7 --&gt; 18 --&gt; 18 --&gt; 6 --&gt; None
-
-Case 2 — target tidak ditemukan (18 tidak ada):
-  Sebelum:   Head --&gt; 7 --&gt; 10 --&gt; 6 --&gt; None
-  [NOT FOUND] 18 tidak ditemukan → sisipkan 18 di akhir
-  Sesudah:   Head --&gt; 7 --&gt; 10 --&gt; 6 --&gt; 18 --&gt; None
-
-=======================================================
-ORDERED LIST
-=======================================================
-
-Case A — nilai sudah ada (insert 18, list: 5→10→18→25):
-  Sebelum:   Head --&gt; 5 --&gt; 10 --&gt; 18 --&gt; 25 --&gt; None
-  [FOUND] 18 ada → sisipkan SETELAH node 18
-  Sesudah:   Head --&gt; 5 --&gt; 10 --&gt; 18 --&gt; 18 --&gt; 25 --&gt; None
-
-Case B — nilai belum ada (insert 18, list: 5→10→25):
-  Sebelum:   Head --&gt; 5 --&gt; 10 --&gt; 25 --&gt; None
-  [NOT FOUND] 18 tidak ada → sisipkan sebelum 25
-  Sesudah:   Head --&gt; 5 --&gt; 10 --&gt; 18 --&gt; 25 --&gt; None
-
-Case C — insert di akhir (insert 30, list: 5→10→25):
-  Sebelum:   Head --&gt; 5 --&gt; 10 --&gt; 25 --&gt; None
-  [NOT FOUND] 30 tidak ada → sisipkan sebelum akhir list
-  Sesudah:   Head --&gt; 5 --&gt; 10 --&gt; 25 --&gt; 30 --&gt; None
-</pre></div>
 </div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -646,7 +606,7 @@ Case C — insert di akhir (insert 30, list: 5→10→25):
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Tugas 3: Pencarian Data dengan Hashing</p>
       </div>
     </a>
     <a class="right-next"
@@ -654,7 +614,7 @@ Case C — insert di akhir (insert 30, list: 5→10→25):
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Tugas 5: Visualisasi dan Operasi Tree</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -664,23 +624,6 @@ Case C — insert di akhir (insert 30, list: 5→10→25):
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
