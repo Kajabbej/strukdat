@@ -385,30 +385,28 @@
 <h1>linked<a class="headerlink" href="#linked" title="Link to this heading">#</a></h1>
 <section id="kenapa-harus-linked-list">
 <h2>1. Kenapa Harus Linked List?<a class="headerlink" href="#kenapa-harus-linked-list" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>[cite_start]<strong>Problem:</strong> List bawaan Python itu dinamis, ukurannya bisa berubah-ubah[cite: 203, 204]. [cite_start]Tapi di bahasa pemrograman lain, ukuran <em>array/list</em> biasanya kaku (harus dipesan di awal)[cite: 206].</p></li>
-<li><p>[cite_start]<strong>Solusi:</strong> Bikin struktur data sendiri yang ukurannya bebas memanjang/memendek saat program jalan, namanya <strong>Linked List</strong>[cite: 206].</p></li>
-<li><p>[cite_start]Karena datanya nyebar di memori (nggak berurutan), kita butuh “penunjuk jalan” biar data satu dan lainnya tetap nyambung[cite: 214, 230].</p></li>
-</ul>
+<p><strong>Problem:</strong> List bawaan Python itu dinamis, ukurannya bisa berubah-ubah. Tapi di bahasa pemrograman lain, ukuran <em>array/list</em> biasanya kaku (harus dipesan di awal).
+Solusi:** Bikin struktur data sendiri yang ukurannya bebas memanjang/memendek saat program jalan, namanya <strong>Linked List</strong>.
+Karena datanya nyebar di memori (nggak berurutan), kita butuh “penunjuk jalan” biar data satu dan lainnya tetap nyambung.</p>
 <section id="komponen-utama-node">
 <h3>2. Komponen Utama: Node<a class="headerlink" href="#komponen-utama-node" title="Link to this heading">#</a></h3>
-<p>Node itu ibarat gerbong kereta. [cite_start]Di dalam satu gerbong (Node), pasti ada dua informasi[cite: 235, 236]:</p>
+<p>Node itu ibarat gerbong kereta. Di dalam satu gerbong (Node), pasti ada dua informasi:</p>
 <ol class="arabic simple">
-<li><p>[cite_start]<strong>Data:</strong> Isi nilainya (misal angka 93)[cite: 247, 251].</p></li>
-<li><p>[cite_start]<strong>Next:</strong> <em>Pointer</em> / penunjuk ke gerbong selanjutnya[cite: 252]. [cite_start]Kalau dia gerbong terakhir, <code class="docutils literal notranslate"><span class="pre">next</span></code>-nya berisi <code class="docutils literal notranslate"><span class="pre">None</span></code> (Ground/Nil)[cite: 247, 252].</p></li>
+<li><p><strong>Data:</strong> Isi nilainya (misal angka 93).</p></li>
+<li><p><strong>Next:</strong> <em>Pointer</em> / penunjuk ke gerbong selanjutnya. Kalau dia gerbong terakhir, <code class="docutils literal notranslate"><span class="pre">next</span></code>-nya berisi <code class="docutils literal notranslate"><span class="pre">None</span></code> (Ground/Nil).</p></li>
 </ol>
 <p><strong>Method Wajib di Node:</strong></p>
 <ul class="simple">
-<li><p>[cite_start]<code class="docutils literal notranslate"><span class="pre">getData()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setData()</span></code>: Buat ngambil dan ngubah isi datanya[cite: 239, 241].</p></li>
-<li><p>[cite_start]<code class="docutils literal notranslate"><span class="pre">getNext()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setNext()</span></code>: Buat ngambil dan ngubah penunjuk ke node selanjutnya[cite: 240, 242].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getData()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setData()</span></code>: Buat ngambil dan ngubah isi datanya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getNext()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">setNext()</span></code>: Buat ngambil dan ngubah penunjuk ke node selanjutnya.</p></li>
 </ul>
 </section>
 <section id="linked-list-head">
 <h3>3. Linked List &amp; Head<a class="headerlink" href="#linked-list-head" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>[cite_start]Linked List itu kumpulan gerbong (node) tadi[cite: 280].</p></li>
-<li><p>Biar keretanya bisa jalan, kita wajib tahu mana lokomotif awalnya. [cite_start]Di sini namanya <strong><code class="docutils literal notranslate"><span class="pre">Head</span></code></strong>[cite: 231, 281].</p></li>
-<li><p>[cite_start]Kalau <code class="docutils literal notranslate"><span class="pre">Head</span></code> masih berisi <code class="docutils literal notranslate"><span class="pre">None</span></code>, berarti keretanya (Linked List) masih kosong melompong[cite: 286, 288].</p></li>
+<li><p>Linked List itu kumpulan gerbong (node) tadi.</p></li>
+<li><p>Biar keretanya bisa jalan, kita wajib tahu mana lokomotif awalnya. Di sini namanya <strong><code class="docutils literal notranslate"><span class="pre">Head</span></code></strong></p></li>
+<li><p>Kalau <code class="docutils literal notranslate"><span class="pre">Head</span></code> masih berisi <code class="docutils literal notranslate"><span class="pre">None</span></code>, berarti keretanya (Linked List) masih kosong melompong.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -417,12 +415,12 @@
 <section id="a-nambah-data-add">
 <h4>A. Nambah Data (<code class="docutils literal notranslate"><span class="pre">add</span></code>)<a class="headerlink" href="#a-nambah-data-add" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>[cite_start]Data baru <em>default</em>-nya selalu ditambahin di <strong>paling depan</strong> (nempel ke Head)[cite: 313].</p></li>
+<li><p>Data baru <em>default</em>-nya selalu ditambahin di <strong>paling depan</strong> (nempel ke Head).</p></li>
 <li><p><strong>Aturan Nambah Data (JANGAN KEBALIK!):</strong></p>
 <ol class="arabic simple">
-<li><p>[cite_start]Node baru suruh nunjuk ke node lama (yang lagi dipegang Head)[cite: 315].</p></li>
-<li><p>[cite_start]Baru Head-nya disuruh pegang node baru tersebut[cite: 316].
-[cite_start]<em>💡 Kalau Head-nya duluan yang dipindah, sisa gerbong di belakangnya bakal putus dan hilang dari memori!</em> [cite: 327]</p></li>
+<li><p>Node baru suruh nunjuk ke node lama (yang lagi dipegang Head).</p></li>
+<li><p>Baru Head-nya disuruh pegang node baru tersebut.
+<em>Kalau Head-nya duluan yang dipindah, sisa gerbong di belakangnya bakal putus dan hilang dari memori!</em></p></li>
 </ol>
 </li>
 </ul>
@@ -430,16 +428,16 @@
 <section id="b-jalan-jalan-traversal-size-search-display">
 <h4>B. Jalan-jalan / Traversal (<code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">display</span></code>)<a class="headerlink" href="#b-jalan-jalan-traversal-size-search-display" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Kita nggak bisa langsung loncat ke node ke-5. [cite_start]Harus jalan dari Head satu per satu pakai bantuan pointer <code class="docutils literal notranslate"><span class="pre">current</span></code>[cite: 380].</p></li>
-<li><p>[cite_start]Caranya: <code class="docutils literal notranslate"><span class="pre">current</span> <span class="pre">=</span> <span class="pre">current.getNext()</span></code> (geser terus sampai ketemu data yang dicari atau sampai nilainya <code class="docutils literal notranslate"><span class="pre">None</span></code>)[cite: 384, 385, 418].</p></li>
+<li><p>Kita nggak bisa langsung loncat ke node ke-5. Harus jalan dari Head satu per satu pakai bantuan pointer <code class="docutils literal notranslate"><span class="pre">current</span></code>.</p></li>
+<li><p>Caranya: <code class="docutils literal notranslate"><span class="pre">current</span> <span class="pre">=</span> <span class="pre">current.getNext()</span></code> (geser terus sampai ketemu data yang dicari atau sampai nilainya <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
 </ul>
 </section>
 <section id="c-menghapus-data-remove">
 <h4>C. Menghapus Data (<code class="docutils literal notranslate"><span class="pre">remove</span></code>)<a class="headerlink" href="#c-menghapus-data-remove" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Ini agak <em>tricky</em>. [cite_start]Kita butuh dua tangan (pointer): <code class="docutils literal notranslate"><span class="pre">current</span></code> (buat nyari target) dan <code class="docutils literal notranslate"><span class="pre">previous</span></code> (buat ngikutin dari belakang)[cite: 517, 518].</p></li>
-<li><p>[cite_start]Kalau target ketemu, node sebelumnya (<code class="docutils literal notranslate"><span class="pre">previous</span></code>) langsung disambungin ke node sesudahnya target[cite: 516, 518]. Otomatis targetnya bakal terputus dan kehapus!</p></li>
-<li><p>[cite_start]<strong>Pengecualian:</strong> Kalau yang dihapus itu node pertama (Head), tinggal geser aja Head-nya ke node kedua[cite: 557].</p></li>
+<li><p>Ini agak <em>tricky</em>. Kita butuh dua tangan (pointer): <code class="docutils literal notranslate"><span class="pre">current</span></code> (buat nyari target) dan <code class="docutils literal notranslate"><span class="pre">previous</span></code> (buat ngikutin dari belakang).</p></li>
+<li><p>Kalau target ketemu, node sebelumnya (<code class="docutils literal notranslate"><span class="pre">previous</span></code>) langsung disambungin ke node sesudahnya target. Otomatis targetnya bakal terputus dan kehapus!</p></li>
+<li><p><strong>Pengecualian:</strong> Kalau yang dihapus itu node pertama (Head), tinggal geser aja Head-nya ke node kedua.</p></li>
 </ul>
 </section>
 </section>
@@ -447,9 +445,9 @@
 <section id="ordered-list-list-terurut">
 <h3>5. Ordered List (List Terurut)<a class="headerlink" href="#ordered-list-list-terurut" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>[cite_start]Ini versi <em>upgrade</em>[cite: 654]. [cite_start]Datanya selalu diurutkan dari kecil ke besar setiap kali ada data masuk[cite: 655].</p></li>
-<li><p>[cite_start]<strong>Keuntungannya:</strong> Nyari data jadi jauh lebih cepet[cite: 653].</p></li>
-<li><p>[cite_start]Kalau kita nyari angka 10 tapi <em>current</em> udah nyentuh angka 15, pencarian langsung berhenti (<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">=</span> <span class="pre">True</span></code>), gak perlu repot ngecek sampai belakang[cite: 653, 701].</p></li>
+<li><p>Ini versi <em>upgrade</em>. Datanya selalu diurutkan dari kecil ke besar setiap kali ada data masuk.</p></li>
+<li><p><strong>Keuntungannya:</strong> Nyari data jadi jauh lebih cepet.</p></li>
+<li><p>Kalau kita nyari angka 10 tapi <em>current</em> udah nyentuh angka 15, pencarian langsung berhenti (<code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">=</span> <span class="pre">True</span></code>), gak perlu repot ngecek sampai belakang.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
