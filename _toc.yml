@@ -13,8 +13,8 @@ parts:
       title: 4. Hashing
     - file: materi/list
       title: 5. Linked List
-    - file: tree
-      title: 6. materi/tree
+    - file: materi/tree
+      title: 6. Tree
 
   - caption: Tugas
     chapters:
