@@ -13,6 +13,7 @@
 .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
 .profile-card { background: #fff; border: 0.5px solid #E2E4E7; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 .card-header { background: #0D0F12; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.avatar { width: 48px; height: 48px; border-radius: 12px; background: #1C1E22; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .avatar img {
   width: 100%;
   height: 100%;
@@ -49,7 +50,7 @@
     <div class="profile-card">
       <div class="card-header">
         <div class="avatar">
-          <img src="https://kajabbej.github.io/strukdat/images/logo.png" alt="Foto Ghufron">
+          <img src="images/logo.png" alt="Foto Ghufron">
         </div>
         <div>
           <p class="c-role">Mahasiswa</p>
@@ -70,7 +71,9 @@
     </div>
     <div class="profile-card">
       <div class="card-header">
-        <div class="avatar"></div>
+        <div class="avatar">
+          <img src="images/logo.png" alt="Logo UTM">
+        </div>
         <div>
           <p class="c-role">Dosen Pengampu</p>
           <p class="c-name">Dr. Arik Kurniawati S.Kom., M.T</p>
