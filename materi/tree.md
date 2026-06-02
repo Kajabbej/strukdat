@@ -1,6 +1,6 @@
 **Materi:** Konsep Dasar Tree & Binary Tree
 
-###  1. tree
+###  6. tree
 * **Sifatnya:** *Non-linear*. (Catatan: Beda sama Stack atau Queue yang datanya berbaris lurus/linear).
 * **Analogi:** Konsepnya ngambil dari pohon di dunia biologi, tapi bentuknya **kebalik**. 
 * **Susunan:** Akarnya (root) ada di bagian paling atas, sedangkan daun (leaf) dan cabangnya ada di bawahnya.

@@ -1,4 +1,4 @@
-﻿# Sorting
+﻿# 3. Sorting
 # Algoritma Sorting (Pengurutan Data)
 
 ## E. BUBBLE SORT
