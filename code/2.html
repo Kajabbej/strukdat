@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>2. Infix, Prefix, &amp; Postfix &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'code/2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="3.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="1.html" />
+    <link rel="next" title="3. Sorting" href="3.html" />
+    <link rel="prev" title="1. Stack, Queue, Deque, Sorting, &amp; Hashing" href="1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,6 +181,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.html">1.stack</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Infix, Prefix, dan Postfix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.html">3. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.html">4. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.html">5. Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -303,9 +312,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -316,19 +323,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>2. Infix, Prefix, & Postfix</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -338,7 +337,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="infix-prefix-postfix">
+<h1>2. Infix, Prefix, &amp; Postfix<a class="headerlink" href="#infix-prefix-postfix" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- STACK HELPER UNTUK EKSPRESI ---</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
@@ -586,44 +587,8 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== VERIFIKASI KONVERSI &amp; EVALUASI EKSPRESI MATEMATIKA ===
-----------------------------------------------------------
-1. Konversi Infix ke Postfix &amp; Prefix:
-Infix   : A + B * C
-Postfix : A B C * +
-Prefix  : + A * B C
-----------------------------------------
-Infix   : (A + B) * C
-Postfix : A B + C *
-Prefix  : * + A B C
-----------------------------------------
-Infix   : A * (B + C)
-Postfix : A B C + *
-Prefix  : * A + B C
-----------------------------------------
-Infix   : (A - B) / (C + D)
-Postfix : A B - C D + /
-Prefix  : / - A B + C D
-----------------------------------------
-Infix   : A ^ B * C + D
-Postfix : A B ^ C * D +
-Prefix  : + * ^ A B C D
-----------------------------------------
-
-2. Evaluasi Numerik Ekspresi Postfix &amp; Prefix:
-Postfix &#39;5 3 2 * +&#39; -&gt; Hasil: 11
-Prefix  &#39;+ 5 * 3 2&#39; -&gt; Hasil: 11
-Postfix &#39;2 3 + 2 ^ 5 -&#39; -&gt; Hasil: 20
-Prefix  &#39;- ^ + 2 3 2 5&#39; -&gt; Hasil: 20
-
-3. Konversi Balik (Postfix/Prefix ke Infix):
-Postfix &#39;A B + C *&#39; -&gt; Infix: ((A + B) * C)
-Prefix  &#39;* + A B C&#39; -&gt; Infix: ((A + B) * C)
-</pre></div>
 </div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -661,7 +626,7 @@ Prefix  &#39;* + A B C&#39; -&gt; Infix: ((A + B) * C)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">1. Stack, Queue, Deque, Sorting, &amp; Hashing</p>
       </div>
     </a>
     <a class="right-next"
@@ -669,7 +634,7 @@ Prefix  &#39;* + A B C&#39; -&gt; Infix: ((A + B) * C)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">3. Sorting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -679,23 +644,6 @@ Prefix  &#39;* + A B C&#39; -&gt; Infix: ((A + B) * C)
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
