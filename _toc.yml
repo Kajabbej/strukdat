@@ -1,4 +1,4 @@
-﻿format: jb-book
+format: jb-book
 root: intro
 parts:
   - caption: Materi
@@ -31,9 +31,9 @@ parts:
 
   - caption: code
     chapters:
-    - file: code/1.
+    - file: code/1
       title: 1.stack
-    - file: code/2.
+    - file: code/2
       title: 2. Infix, Prefix, dan Postfix
     - file: code/3
       title: 3. Sorting
