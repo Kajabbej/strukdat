@@ -43,7 +43,7 @@
     <div class="profile-card">
       <div class="card-header">
         <div class="avatar">
-          <img src="images/logo.png" alt="Foto Ghufron">
+          <img src="/strukdat/images/logo.png" alt="Foto Ghufron">
         </div>
         <div>
           <p class="c-role">Mahasiswa</p>
@@ -64,7 +64,7 @@
     </div>
     <div class="profile-card">
       <div class="card-header">
-        <div class="avatar">👩‍🏫</div>
+        <div class="avatar"></div>
         <div>
           <p class="c-role">Dosen Pengampu</p>
           <p class="c-name">Dr. Arik Kurniawati S.Kom., M.T</p>
