@@ -50,7 +50,7 @@
     <div class="profile-card">
       <div class="card-header">
         <div class="avatar">
-          <img src="images/logo.png" alt="Foto Ghufron">
+          <img src="_static/logo.png" alt="Foto Ghufron">
         </div>
         <div>
           <p class="c-role">Mahasiswa</p>
@@ -72,7 +72,7 @@
     <div class="profile-card">
       <div class="card-header">
         <div class="avatar">
-          <img src="images/logo.png" alt="Logo UTM">
+          <img src="_static/logo.png" alt="Logo UTM">
         </div>
         <div>
           <p class="c-role">Dosen Pengampu</p>
