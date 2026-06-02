@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. hasing &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>&lt;no title&gt; &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'code/4';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. linked list" href="5.html" />
-    <link rel="prev" title="3. soting" href="3.html" />
+    <link rel="next" title="&lt;no title&gt;" href="5.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,17 +181,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1..html">1. Stack, Queue &amp; Deque</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="2..html">2. Infix, Prefix, dan Postfix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.html">3. Sorting</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Hashing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5.html">5. Linked List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -314,7 +303,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -325,11 +316,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>4. hasing</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -339,114 +338,307 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hasing">
-<h1>4. hasing<a class="headerlink" href="#hasing" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
-    
-    <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- BERBAGAI FUNGSI HASH ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_division</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="n">table_size</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_mid_square</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+    <span class="c1"># Kuadratkan key, ambil digit tengah, modulo ukuran tabel</span>
+    <span class="n">squared</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">squared</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">length</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">mid_digits</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">squared</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">ukuran</span>
-        
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">indeks_baru</span> <span class="o">!=</span> <span class="n">indeks</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks_baru</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">ukuran</span>
-                
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabel Penuh! Tidak bisa memasukkan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">mid_digits</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">squared</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mid_digits</span> <span class="o">%</span> <span class="n">table_size</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_folding</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+    <span class="c1"># Bagi key menjadi kelompok 2 digit, jumlahkan, modulo ukuran tabel</span>
+    <span class="n">key_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">key_str</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_str</span><span class="p">),</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">%</span> <span class="n">table_size</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_string_polynomial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">table_size</span><span class="p">):</span>
+    <span class="c1"># Polynomial rolling hash untuk string</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">31</span>
+    <span class="n">hash_val</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">hash_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">hash_val</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">))</span> <span class="o">%</span> <span class="n">table_size</span>
+    <span class="k">return</span> <span class="n">hash_val</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_quadratic_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- RESOLUSI KOLISI: LINEAR PROBING ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="n">collisions</span> <span class="o">=</span> <span class="mi">0</span>
     
-    <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="c1"># Bisa menempati slot kosong (None) atau tanda &quot;DELETED&quot;</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DELETED&quot;</span><span class="p">:</span>
+            <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="k">elif</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="c1"># Update key jika sudah ada</span>
+            <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="n">collisions</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ukuran</span><span class="p">:</span>
-            <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">))</span> <span class="o">%</span> <span class="n">ukuran</span>
-            <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OVERFLOW! Tabel penuh dengan Linear Probing untuk key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">collisions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># Tidak ditemukan</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">curr_idx</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">search_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;DELETED&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- RESOLUSI KOLISI: QUADRATIC PROBING ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_quadratic_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="n">collisions</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DELETED&quot;</span><span class="p">:</span>
+            <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="k">elif</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="n">collisions</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal menempatkan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> dengan Quadratic Probing&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">collisions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_quadratic_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">curr_idx</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- RESOLUSI KOLISI: DOUBLE HASHING ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">secondary_hash</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="c1"># Fungsi hash kedua (harus menghasilkan nilai &gt; 0)</span>
+    <span class="k">return</span> <span class="mi">7</span> <span class="o">-</span> <span class="p">(</span><span class="n">key</span> <span class="o">%</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_double_hashing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">secondary_hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">collisions</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">step</span> <span class="o">*</span> <span class="n">h2</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DELETED&quot;</span><span class="p">:</span>
+            <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="k">elif</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">curr_idx</span><span class="p">,</span> <span class="n">collisions</span>
+        <span class="n">collisions</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal menempatkan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> dengan Double Hashing&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">collisions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_double_hashing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">secondary_hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">step</span> <span class="o">*</span> <span class="n">h2</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">curr_idx</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- RESOLUSI KOLISI: CHAINING ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="c1"># Jika key belum ada di bucket list, tambahkan</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">idx</span><span class="p">,</span> <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">search_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="p">,</span> <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">idx</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">search_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- HASH TABLE DENGAN DYNAMIC REHASHING ---</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleHashTable</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">capacity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_load_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">rehash</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">old_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span>
+        <span class="n">old_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">old_capacity</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[REHASHING] Load factor = </span><span class="si">{</span><span class="n">old_capacity</span><span class="o">/</span><span class="n">old_capacity</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &gt;= 0.75. Kapasitas diperbesar dari </span><span class="si">{</span><span class="n">old_capacity</span><span class="si">}</span><span class="s2"> ke </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">old_table</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;DELETED&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal memposisikan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> dengan Quadratic Probing&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_load_factor</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">0.75</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rehash</span><span class="p">()</span>
+            
+        <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">size</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">curr_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;DELETED&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">curr_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span>
+                
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Table (LF=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_load_factor</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
-    <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- VERIFIKASI &amp; BENCHMARK DENGAN KASUS UJI ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 1. VERIFIKASI FUNGSI HASH ===&quot;</span><span class="p">)</span>
+<span class="n">key_uji</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">size_tabel</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key Uji: </span><span class="si">{</span><span class="n">key_uji</span><span class="si">}</span><span class="s2"> | Ukuran Tabel: </span><span class="si">{</span><span class="n">size_tabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Division Method    : </span><span class="si">{</span><span class="n">hash_division</span><span class="p">(</span><span class="n">key_uji</span><span class="p">,</span><span class="w"> </span><span class="n">size_tabel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mid-Square Method  : </span><span class="si">{</span><span class="n">hash_mid_square</span><span class="p">(</span><span class="n">key_uji</span><span class="p">,</span><span class="w"> </span><span class="n">size_tabel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Folding Method     : </span><span class="si">{</span><span class="n">hash_folding</span><span class="p">(</span><span class="n">key_uji</span><span class="p">,</span><span class="w"> </span><span class="n">size_tabel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;String Polynomial  : </span><span class="si">{</span><span class="n">hash_string_polynomial</span><span class="p">(</span><span class="s1">&#39;Strukdat&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">size_tabel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 2. VERIFIKASI OPEN ADDRESSING &amp; CHAINING ===&quot;</span><span class="p">)</span>
+<span class="n">data_uji</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">tabel_size</span> <span class="o">=</span> <span class="mi">11</span>
+
+<span class="c1"># Uji Linear Probing</span>
+<span class="n">tabel_linear</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">tabel_size</span>
+<span class="n">linear_collisions</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">coll</span> <span class="o">=</span> <span class="n">insert_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="n">linear_collisions</span> <span class="o">+=</span> <span class="n">coll</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil Linear Probing    : </span><span class="si">{</span><span class="n">tabel_linear</span><span class="si">}</span><span class="s2"> | Total Tabrakan: </span><span class="si">{</span><span class="n">linear_collisions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Uji Quadratic Probing</span>
+<span class="n">tabel_quad</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">tabel_size</span>
+<span class="n">quad_collisions</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">coll</span> <span class="o">=</span> <span class="n">insert_quadratic_probing</span><span class="p">(</span><span class="n">tabel_quad</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="n">quad_collisions</span> <span class="o">+=</span> <span class="n">coll</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil Quadratic Probing : </span><span class="si">{</span><span class="n">tabel_quad</span><span class="si">}</span><span class="s2"> | Total Tabrakan: </span><span class="si">{</span><span class="n">quad_collisions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Uji Double Hashing</span>
+<span class="n">tabel_double</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">tabel_size</span>
+<span class="n">double_collisions</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">coll</span> <span class="o">=</span> <span class="n">insert_double_hashing</span><span class="p">(</span><span class="n">tabel_double</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="n">double_collisions</span> <span class="o">+=</span> <span class="n">coll</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil Double Hashing    : </span><span class="si">{</span><span class="n">tabel_double</span><span class="si">}</span><span class="s2"> | Total Tabrakan: </span><span class="si">{</span><span class="n">double_collisions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Uji Chaining</span>
+<span class="n">tabel_chain</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tabel_size</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
+    <span class="n">insert_chaining</span><span class="p">(</span><span class="n">tabel_chain</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil Chaining          : </span><span class="si">{</span><span class="n">tabel_chain</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 3. VERIFIKASI PENCARIAN &amp; PENGHAPUSAN ===&quot;</span><span class="p">)</span>
+<span class="c1"># Cari 17 di Linear Probing</span>
+<span class="n">idx_found</span> <span class="o">=</span> <span class="n">search_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kunci 17 ditemukan di indeks Linear Probing: </span><span class="si">{</span><span class="n">idx_found</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Hapus 17</span>
+<span class="n">delete_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Linear Probing setelah kunci 17 dihapus    : </span><span class="si">{</span><span class="n">tabel_linear</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cari kembali kunci 17 (Hasil: </span><span class="si">{</span><span class="n">search_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 4. VERIFIKASI DYNAMIC REHASHING ===&quot;</span><span class="p">)</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">SimpleHashTable</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
+<span class="n">ht</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ht</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">ht</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah memasukkan 3 elemen:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
+<span class="n">ht</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">43</span><span class="p">)</span> <span class="c1"># Belum rehash (lf = 0.60, setelah masuk jadi 0.80)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah elemen ke-4 masuk:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
+<span class="n">ht</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span> <span class="c1"># Memicu rehash karena lf = 0.80 &gt;= 0.75</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah elemen ke-5 dimasukkan (Rehashing Terpicu):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">data_uji</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-    <span class="n">ukuran_tabel</span> <span class="o">=</span> <span class="mi">11</span>
-
-    <span class="c1"># Uji 1: Linear Probing</span>
-    <span class="n">tabel_linear</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">ukuran_tabel</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Linear Probing:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-
-    <span class="c1"># Uji 2: Quadratic Probing</span>
-    <span class="n">tabel_quadratic</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">ukuran_tabel</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_quadratic_probing</span><span class="p">(</span><span class="n">tabel_quadratic</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Quadratic Probing:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_quadratic</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-
-    <span class="c1"># Uji 3: Chaining</span>
-    <span class="n">tabel_chaining</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ukuran_tabel</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_chaining</span><span class="p">(</span><span class="n">tabel_chaining</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Chaining:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_chaining</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil Linear Probing:
-[77, 44, 55, 20, 26, 93, 17, None, None, 31, 54]
---------------------------------------------------
-Hasil Quadratic Probing:
-[77, 44, 20, 55, 26, 93, 17, None, None, 31, 54]
---------------------------------------------------
-Hasil Chaining:
-[[77, 44, 55], [], [], [], [26], [93], [17], [], [], [31, 20], [54]]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -484,7 +676,7 @@ Hasil Chaining:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">3. soting</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
     </a>
     <a class="right-next"
@@ -492,7 +684,7 @@ Hasil Chaining:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5. linked list</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -502,6 +694,23 @@ Hasil Chaining:
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

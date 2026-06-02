@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. KONVERSI INFIX KE POSTFIX &amp; PREFIX &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>&lt;no title&gt; &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'code/2.';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. soting" href="3.html" />
-    <link rel="prev" title="1. Stack, Queue &amp; Deque" href="1..html" />
+    <link rel="next" title="&lt;no title&gt;" href="3.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="1..html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,17 +181,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1..html">1. Stack, Queue &amp; Deque</a></li>
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Infix, Prefix, dan Postfix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.html">3. Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4.html">4. Hashing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5.html">5. Linked List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -314,7 +303,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -325,11 +316,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>2. KONVERSI INFIX KE POSTFIX & PREFIX</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -339,47 +338,89 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="konversi-infix-ke-postfix-prefix">
-<h1>2. KONVERSI INFIX KE POSTFIX &amp; PREFIX<a class="headerlink" href="#konversi-infix-ke-postfix-prefix" title="Link to this heading">#</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- STACK HELPER UNTUK EKSPRESI ---</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">infix_to_postfix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
-    <span class="n">prioritas</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;+&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="n">stack</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- KONVERSI INFIX KE POSTFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">infix_to_postfix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">presedensi</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;+&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Hapus spasi</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
             <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
-            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
-            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">stack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="ow">and</span> <span class="n">stack</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
                 <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-            <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">stack</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span> <span class="ow">and</span>
-                   <span class="n">prioritas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">prioritas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># Buang &#39;(&#39;</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># Operator</span>
+            <span class="k">while</span> <span class="p">(</span><span class="ow">not</span> <span class="n">stack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="ow">and</span> <span class="n">stack</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span> <span class="ow">and</span>
+                   <span class="n">presedensi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">peek</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">presedensi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
                 <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-
-    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
-        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-
-    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">infix_to_prefix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
-    <span class="c1"># Langkah 1: balik dan ganti kurung</span>
-    <span class="n">dibalik</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">ganti</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dibalik</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>   <span class="n">ganti</span> <span class="o">+=</span> <span class="s1">&#39;)&#39;</span>
-        <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span> <span class="n">ganti</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span>
-        <span class="k">else</span><span class="p">:</span>          <span class="n">ganti</span> <span class="o">+=</span> <span class="n">c</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
             
-    <span class="c1"># Langkah 2: Konversi ke postfix</span>
-    <span class="n">postfix</span> <span class="o">=</span> <span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">ganti</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">stack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- KONVERSI INFIX KE PREFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">infix_to_prefix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="c1"># Balik ekspresi dan sesuaikan kurung</span>
+    <span class="n">dibalik</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">dibalik</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+    <span class="n">ekspresi_balik</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
     
-    <span class="c1"># Langkah 3: Balik hasil postfix</span>
+    <span class="c1"># Konversi ke postfix</span>
+    <span class="n">postfix</span> <span class="o">=</span> <span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">ekspresi_balik</span><span class="p">)</span>
+    
+    <span class="c1"># Balik hasil postfix untuk mendapatkan prefix</span>
     <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">postfix</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -387,28 +428,202 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soal</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A+B&quot;</span><span class="p">,</span> <span class="s2">&quot;A+B*C&quot;</span><span class="p">,</span> <span class="s2">&quot;(A+B)*C&quot;</span><span class="p">,</span> <span class="s2">&quot;A*(B+C)&quot;</span><span class="p">,</span> <span class="s2">&quot;(A-B)/(C+D)&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- EVALUASI EKSPRESI POSTFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluasi_postfix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="c1"># Cek jika token numerik desimal atau bulat</span>
+            <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="c1"># Jika berupa variabel, beri nilai dummy atau error</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variabel &#39;</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; tidak bisa dievaluasi tanpa nilai!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">operand2</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">operand1</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            
+            <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">+</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">-</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">*</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">/</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;^&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">**</span> <span class="n">operand2</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- EVALUASI EKSPRESI PREFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluasi_prefix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="c1"># Evaluasi dari kanan ke kiri</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variabel &#39;</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; tidak bisa dievaluasi tanpa nilai!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">operand1</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">operand2</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            
+            <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">+</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">-</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">*</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">/</span> <span class="n">operand2</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;^&#39;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">**</span> <span class="n">operand2</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- KONVERSI POSTFIX KE INFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">postfix_to_infix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">op2</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">op1</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">op1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">op2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- KONVERSI PREFIX KE INFIX ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prefix_to_infix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="c1"># Proses dari kanan ke kiri</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">op1</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">op2</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">op1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">op2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- VERIFIKASI &amp; DEMONSTRASI SELURUH OPERASI ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== VERIFIKASI KONVERSI &amp; EVALUASI EKSPRESI MATEMATIKA ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------------------------------------------&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Infix&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Postfix&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Prefix&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soal</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">infix_to_prefix</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">infix_examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;A + B * C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(A + B) * C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;A * (B + C)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(A - B) / (C + D)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;A ^ B * C + D&quot;</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Konversi Infix ke Postfix &amp; Prefix:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">infix_examples</span><span class="p">:</span>
+    <span class="n">postfix</span> <span class="o">=</span> <span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">infix_to_prefix</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Infix   : </span><span class="si">{</span><span class="n">expr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Postfix : </span><span class="si">{</span><span class="n">postfix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefix  : </span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2. Evaluasi Numerik Ekspresi Postfix &amp; Prefix:&quot;</span><span class="p">)</span>
+<span class="n">post_expr1</span> <span class="o">=</span> <span class="s2">&quot;5 3 2 * +&quot;</span>  <span class="c1"># 5 + (3 * 2) = 11</span>
+<span class="n">pre_expr1</span> <span class="o">=</span> <span class="s2">&quot;+ 5 * 3 2&quot;</span>
+<span class="n">post_expr2</span> <span class="o">=</span> <span class="s2">&quot;2 3 + 2 ^ 5 -&quot;</span>  <span class="c1"># (2 + 3) ^ 2 - 5 = 20</span>
+<span class="n">pre_expr2</span> <span class="o">=</span> <span class="s2">&quot;- ^ + 2 3 2 5&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Postfix &#39;</span><span class="si">{</span><span class="n">post_expr1</span><span class="si">}</span><span class="s2">&#39; -&gt; Hasil: </span><span class="si">{</span><span class="n">evaluasi_postfix</span><span class="p">(</span><span class="n">post_expr1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefix  &#39;</span><span class="si">{</span><span class="n">pre_expr1</span><span class="si">}</span><span class="s2">&#39; -&gt; Hasil: </span><span class="si">{</span><span class="n">evaluasi_prefix</span><span class="p">(</span><span class="n">pre_expr1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Postfix &#39;</span><span class="si">{</span><span class="n">post_expr2</span><span class="si">}</span><span class="s2">&#39; -&gt; Hasil: </span><span class="si">{</span><span class="n">evaluasi_postfix</span><span class="p">(</span><span class="n">post_expr2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefix  &#39;</span><span class="si">{</span><span class="n">pre_expr2</span><span class="si">}</span><span class="s2">&#39; -&gt; Hasil: </span><span class="si">{</span><span class="n">evaluasi_prefix</span><span class="p">(</span><span class="n">pre_expr2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">3. Konversi Balik (Postfix/Prefix ke Infix):&quot;</span><span class="p">)</span>
+<span class="n">post_sym</span> <span class="o">=</span> <span class="s2">&quot;A B + C *&quot;</span>
+<span class="n">pre_sym</span> <span class="o">=</span> <span class="s2">&quot;* + A B C&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Postfix &#39;</span><span class="si">{</span><span class="n">post_sym</span><span class="si">}</span><span class="s2">&#39; -&gt; Infix: </span><span class="si">{</span><span class="n">postfix_to_infix</span><span class="p">(</span><span class="n">post_sym</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefix  &#39;</span><span class="si">{</span><span class="n">pre_sym</span><span class="si">}</span><span class="s2">&#39; -&gt; Infix: </span><span class="si">{</span><span class="n">prefix_to_infix</span><span class="p">(</span><span class="n">pre_sym</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Infix                Postfix              Prefix
--------------------------------------------------------
-A+B                  A B +                + A B
-A+B*C                A B C * +            + A * B C
-(A+B)*C              A B + C *            * + A B C
-A*(B+C)              A B C + *            * A + B C
-(A-B)/(C+D)          A B - C D + /        / - A B + C D
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== VERIFIKASI KONVERSI &amp; EVALUASI EKSPRESI MATEMATIKA ===
+----------------------------------------------------------
+1. Konversi Infix ke Postfix &amp; Prefix:
+Infix   : A + B * C
+Postfix : A B C * +
+Prefix  : + A * B C
+----------------------------------------
+Infix   : (A + B) * C
+Postfix : A B + C *
+Prefix  : * + A B C
+----------------------------------------
+Infix   : A * (B + C)
+Postfix : A B C + *
+Prefix  : * A + B C
+----------------------------------------
+Infix   : (A - B) / (C + D)
+Postfix : A B - C D + /
+Prefix  : / - A B + C D
+----------------------------------------
+Infix   : A ^ B * C + D
+Postfix : A B ^ C * D +
+Prefix  : + * ^ A B C D
+----------------------------------------
+
+2. Evaluasi Numerik Ekspresi Postfix &amp; Prefix:
+Postfix &#39;5 3 2 * +&#39; -&gt; Hasil: 11
+Prefix  &#39;+ 5 * 3 2&#39; -&gt; Hasil: 11
+Postfix &#39;2 3 + 2 ^ 5 -&#39; -&gt; Hasil: 20
+Prefix  &#39;- ^ + 2 3 2 5&#39; -&gt; Hasil: 20
+
+3. Konversi Balik (Postfix/Prefix ke Infix):
+Postfix &#39;A B + C *&#39; -&gt; Infix: ((A + B) * C)
+Prefix  &#39;* + A B C&#39; -&gt; Infix: ((A + B) * C)
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -446,7 +661,7 @@ A*(B+C)              A B C + *            * A + B C
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">1. Stack, Queue &amp; Deque</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
     </a>
     <a class="right-next"
@@ -454,7 +669,7 @@ A*(B+C)              A B C + *            * A + B C
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">3. soting</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -464,6 +679,23 @@ A*(B+C)              A B C + *            * A + B C
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
