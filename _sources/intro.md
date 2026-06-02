@@ -43,7 +43,7 @@
     <div class="profile-card">
       <div class="card-header">
         <div class="avatar">
-          <img src="/strukdat/images/logo.png" alt="Foto Ghufron">
+          <img src="https://kajabbej.github.io/strukdat/images/logo.png" alt="Foto Ghufron">
         </div>
         <div>
           <p class="c-role">Mahasiswa</p>
