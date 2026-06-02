@@ -28,3 +28,19 @@ parts:
       title: 4. Linked list
     - file: tugas/25-196_Moh.Ghufron_Tree
       title: 5. Tree
+
+  - caption: code
+    chapters:
+    - file: code/1
+      title: 1.stack
+    - file: code/2
+      title: 2. Infix, Prefix, dan Postfix
+    - file: code/3
+      title: 3. Sorting
+    - file: code/4
+      title: 4. Hashing
+    - file: code/5
+      title: 5. Linked List
+    - file: code/6
+      title: 6. Tree
+      
