@@ -168,25 +168,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="stack-queue.html">1. Stack &amp; Queue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="infix-prefix-postfix.html">2. Infix, Prefix, dan Postfix</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="sorting.html">3. Sorting</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list.html">5. Linked List</a></li>
@@ -201,6 +183,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code/3.html">3. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/4.html">4. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/5.html">5. Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -352,13 +341,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-addressing-chaining">2. Closed Addressing (Chaining)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-hashing-dan-penanganan-collision">Implementasi Hashing dan Penanganan Collision</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-linear-probing">1. Strategi: Linear Probing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-quadratic-probing">2. Strategi: Quadratic Probing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-chaining-closed-addressing">3. Strategi: Chaining (Closed Addressing)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">Uji Coba Kode</a></li>
 </ul>
             </nav>
         </div>
@@ -408,101 +390,8 @@
 <ul class="simple">
 <li><p>Jika <code class="docutils literal notranslate"><span class="pre">77</span></code> dan <code class="docutils literal notranslate"><span class="pre">44</span></code> masuk ke indeks 0, maka isi indeks 0 menjadi list: <code class="docutils literal notranslate"><span class="pre">[77,</span> <span class="pre">44]</span></code>.</p></li>
 </ul>
-</section>
-</section>
 <hr class="docutils" />
-<section id="implementasi-hashing-dan-penanganan-collision">
-<h2>Implementasi Hashing dan Penanganan Collision<a class="headerlink" href="#implementasi-hashing-dan-penanganan-collision" title="Link to this heading">#</a></h2>
-<section id="strategi-linear-probing">
-<h3>1. Strategi: Linear Probing<a class="headerlink" href="#strategi-linear-probing" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_linear_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
-    
-    <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">ukuran</span>
-        
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">indeks_baru</span> <span class="o">!=</span> <span class="n">indeks</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks_baru</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">ukuran</span>
-                
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabel Penuh! Tidak bisa memasukkan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
-<section id="strategi-quadratic-probing">
-<h3>2. Strategi: Quadratic Probing<a class="headerlink" href="#strategi-quadratic-probing" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_quadratic_probing</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
-    
-    <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-        
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ukuran</span><span class="p">:</span>
-            <span class="n">indeks_baru</span> <span class="o">=</span> <span class="p">(</span><span class="n">indeks</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">))</span> <span class="o">%</span> <span class="n">ukuran</span>
-            <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">table</span><span class="p">[</span><span class="n">indeks_baru</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-                
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal memposisikan </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> dengan Quadratic Probing&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="strategi-chaining-closed-addressing">
-<h3>3. Strategi: Chaining (Closed Addressing)<a class="headerlink" href="#strategi-chaining-closed-addressing" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">insert_chaining</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">ukuran</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-    <span class="n">indeks</span> <span class="o">=</span> <span class="n">key</span> <span class="o">%</span> <span class="n">ukuran</span>
-    <span class="n">table</span><span class="p">[</span><span class="n">indeks</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="uji-coba-kode">
-<h2>Uji Coba Kode<a class="headerlink" href="#uji-coba-kode" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">data_uji</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-    <span class="n">ukuran_tabel</span> <span class="o">=</span> <span class="mi">11</span>
-
-    <span class="c1"># Uji 1: Linear Probing</span>
-    <span class="n">tabel_linear</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">ukuran_tabel</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_linear_probing</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Linear Probing:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_linear</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-
-    <span class="c1"># Uji 2: Quadratic Probing</span>
-    <span class="n">tabel_quadratic</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">ukuran_tabel</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_quadratic_probing</span><span class="p">(</span><span class="n">tabel_quadratic</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Quadratic Probing:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_quadratic</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-
-    <span class="c1"># Uji 3: Chaining</span>
-    <span class="n">tabel_chaining</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ukuran_tabel</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_uji</span><span class="p">:</span>
-        <span class="n">insert_chaining</span><span class="p">(</span><span class="n">tabel_chaining</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Chaining:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabel_chaining</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -578,13 +467,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-addressing-chaining">2. Closed Addressing (Chaining)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-hashing-dan-penanganan-collision">Implementasi Hashing dan Penanganan Collision</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-linear-probing">1. Strategi: Linear Probing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-quadratic-probing">2. Strategi: Quadratic Probing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategi-chaining-closed-addressing">3. Strategi: Chaining (Closed Addressing)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-kode">Uji Coba Kode</a></li>
 </ul>
   </nav></div>
 

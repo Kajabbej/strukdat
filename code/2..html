@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. tree &#8212; Struktur Data - Moh. Ghufron</title>
+    <title>2. KONVERSI INFIX KE POSTFIX &amp; PREFIX &#8212; Struktur Data - Moh. Ghufron</title>
   
   
   
@@ -60,11 +60,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materi/tree';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'code/2.';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tugas Stack" href="tugas-stack.html" />
-    <link rel="prev" title="linked" href="list.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,6 +114,8 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -163,20 +163,20 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Materi</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="stack-queue.html">1. Stack &amp; Queue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="infix-prefix-postfix.html">2. Infix, Prefix, dan Postfix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sorting.html">3. Sorting</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../materi/stack-queue.html">1. Stack &amp; Queue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/infix-prefix-postfix.html">2. Infix, Prefix, dan Postfix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/sorting.html">3. Sorting</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="hashing.html">4. Hashing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list.html">5. Linked List</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/hashing.html">4. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/list.html">5. Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/tree.html">6. tree</a></li>
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tugas-stack.html">1. Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../materi/tugas-stack.html">1. Stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Shorting.html">2. Sorting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
@@ -184,10 +184,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../code/3.html">3. Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../code/4.html">4. Hashing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../code/5.html">5. Linked List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../code/6.html">6. Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.html">3. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.html">4. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.html">5. Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -247,7 +247,7 @@
       
       
       
-      <li><a href="../_sources/materi/tree.md" target="_blank"
+      <li><a href="../_sources/code/2..ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -257,7 +257,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -310,9 +310,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -323,25 +321,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6. tree</h1>
+    <h1>2. KONVERSI INFIX KE POSTFIX & PREFIX</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. tree</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#istilah-anatomi-tree">2. Istilah Anatomi Tree</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-tree-pohon-biner">Binary Tree (Pohon Biner)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menambah-data">Menambah Data</a></li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -351,62 +335,75 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Materi:</strong> Konsep Dasar Tree &amp; Binary Tree</p>
-<section id="tree">
-<h1>6. tree<a class="headerlink" href="#tree" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><strong>Sifatnya:</strong> <em>Non-linear</em>. (Catatan: Beda sama Stack atau Queue yang datanya berbaris lurus/linear).</p></li>
-<li><p><strong>Analogi:</strong> Konsepnya ngambil dari pohon di dunia biologi, tapi bentuknya <strong>kebalik</strong>.</p></li>
-<li><p><strong>Susunan:</strong> Akarnya (root) ada di bagian paling atas, sedangkan daun (leaf) dan cabangnya ada di bawahnya.</p></li>
-<li><p><strong>Fungsi:</strong> Biasanya dipakai untuk pencarian solusi. Kita mulai nyari dari atas (root), bergerak ke bawah mengikuti cabangnya (edge), sampai ketemu hasil akhirnya di daun.</p></li>
-</ul>
-</section>
-<section id="istilah-anatomi-tree">
-<h1>2. Istilah Anatomi Tree<a class="headerlink" href="#istilah-anatomi-tree" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><strong>Node:</strong> Bagian dari tree yang menyimpan informasi atau <em>key</em>.</p></li>
-<li><p><strong>Edge:</strong> Garis yang menghubungkan antara node yang satu dengan yang lain. Aturannya: cuma boleh ada <strong>1 garis masuk</strong> ke sebuah node, tapi garis keluarnya bisa satu atau lebih.</p></li>
-<li><p><strong>Root:</strong> <em>Node</em> yang terletak di paling atas, tidak ada edge yang masuk ke dalam node root ini.</p></li>
-<li><p><strong>Leaf (Daun):</strong> <em>Node</em> yang tidak memiliki edge yang keluar, atau node yang tidak memiliki children.</p></li>
-<li><p><strong>Parent:</strong> <em>Node</em> yang memiliki edge yang keluar dari node tersebut.</p></li>
-<li><p><strong>Children:</strong> <em>Node-node</em> yang memiliki edge masuk dari node yang sama.</p></li>
-<li><p><strong>Siblings:</strong> <em>Node-node</em> yang berasal dari <em>Parent</em> yang sama.</p></li>
-<li><p><strong>Path:</strong> Urutan rute <em>node</em> dari <em>root</em> sampai ke tujuan.</p></li>
-<li><p><strong>Subtree:</strong> Kumpulan dari node dan edge yang terdiri dari <em>parent</em> dan semua node setelahnya.</p></li>
-<li><p><strong>Level:</strong> Tingkatan dari node. <em>Root</em> merupakan level ke-0, semakin ke bawah maka levelnya semakin besar.</p></li>
-<li><p><strong>Height:</strong> Tinggi tree, nilai dari height ini adalah level maksimum dari tree.</p></li>
-</ul>
-<hr class="docutils" />
-</section>
-<section id="binary-tree-pohon-biner">
-<h1>Binary Tree (Pohon Biner)<a class="headerlink" href="#binary-tree-pohon-biner" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><strong>Aturan Main:</strong> Tiap <em>parent</em> hanya memiliki dua buah atau satu node <em>children</em> saja.</p></li>
-<li><p>Paling gampang diimplementasikan dengan menggunakan tipe data <em>Class</em>.</p></li>
-<li><p><strong>3 Properti Wajib di Class-nya</strong>:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: digunakan untuk informasi nilai yang terdapat pada node.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">leftChild</span></code>: <em>pointer</em> untuk menunjukkan child sebelah kiri.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rightChild</span></code>: <em>pointer</em> untuk menunjukkan child sebelah kanan.</p></li>
-</ol>
-</li>
-</ul>
-<section id="menambah-data">
-<h2>Menambah Data<a class="headerlink" href="#menambah-data" title="Link to this heading">#</a></h2>
-<p>Di dalam <em>Binary Tree</em>, ada <em>method</em> <code class="docutils literal notranslate"><span class="pre">insertLeft</span></code> dan <code class="docutils literal notranslate"><span class="pre">insertRight</span></code>.</p>
-<ul class="simple">
-<li><p><strong>Kalau posisi kirinya masih kosong:</strong> Subtree tersebut langsung dimasukkan pada <code class="docutils literal notranslate"><span class="pre">leftChild</span></code>.</p></li>
-<li><p><strong>Kalau posisi kirinya SUDAH ADA isinya:</strong> Node baru bakal diselipin (tahapannya harus diatur sedemikian rupa).</p></li>
-<li><p><strong>Urutan Kode Nyelipin Node (Gak Boleh Kebalik!):</strong></p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">t.leftChild</span> <span class="pre">=</span> <span class="pre">self.leftChild</span></code>. (agar node di left child tetap ada)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">self.leftChild</span> <span class="pre">=</span> <span class="pre">t</span></code>.
-<em>💡 Kenapa gak boleh kebalik? Kalau dibalik, node yang merupakan leftchild dari node utama akan hilang, karena tidak ada pointer yang menunjuk ke leftchild tersebut.</em></p></li>
-</ol>
-</li>
-</ul>
-<hr class="docutils" />
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="konversi-infix-ke-postfix-prefix">
+<h1>2. KONVERSI INFIX KE POSTFIX &amp; PREFIX<a class="headerlink" href="#konversi-infix-ke-postfix-prefix" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">infix_to_postfix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="n">prioritas</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;+&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+    <span class="n">stack</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">ekspresi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">stack</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span> <span class="ow">and</span>
+                   <span class="n">prioritas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">prioritas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">infix_to_prefix</span><span class="p">(</span><span class="n">ekspresi</span><span class="p">):</span>
+    <span class="c1"># Langkah 1: balik dan ganti kurung</span>
+    <span class="n">dibalik</span> <span class="o">=</span> <span class="n">ekspresi</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ganti</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dibalik</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>   <span class="n">ganti</span> <span class="o">+=</span> <span class="s1">&#39;)&#39;</span>
+        <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span> <span class="n">ganti</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span>
+        <span class="k">else</span><span class="p">:</span>          <span class="n">ganti</span> <span class="o">+=</span> <span class="n">c</span>
+            
+    <span class="c1"># Langkah 2: Konversi ke postfix</span>
+    <span class="n">postfix</span> <span class="o">=</span> <span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">ganti</span><span class="p">)</span>
+    
+    <span class="c1"># Langkah 3: Balik hasil postfix</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">postfix</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soal</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A+B&quot;</span><span class="p">,</span> <span class="s2">&quot;A+B*C&quot;</span><span class="p">,</span> <span class="s2">&quot;(A+B)*C&quot;</span><span class="p">,</span> <span class="s2">&quot;A*(B+C)&quot;</span><span class="p">,</span> <span class="s2">&quot;(A-B)/(C+D)&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Infix&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Postfix&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Prefix&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soal</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">infix_to_postfix</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">infix_to_prefix</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Infix                Postfix              Prefix
+-------------------------------------------------------
+A+B                  A B +                + A B
+A+B*C                A B C * +            + A * B C
+(A+B)*C              A B + C *            * + A B C
+A*(B+C)              A B C + *            * A + B C
+(A-B)/(C+D)          A B - C D + /        / - A B + C D
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,7 +419,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./materi"
+            path: "./code"
         },
         predefinedOutput: true
     }
@@ -439,53 +436,12 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="list.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">linked</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="tugas-stack.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tugas Stack</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. tree</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#istilah-anatomi-tree">2. Istilah Anatomi Tree</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-tree-pohon-biner">Binary Tree (Pohon Biner)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menambah-data">Menambah Data</a></li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -166,25 +166,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="stack-queue.html">1. Stack &amp; Queue</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Infix, Prefix, dan Postfix</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="sorting.html">3. Sorting</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <li class="toctree-l1"><a class="reference internal" href="hashing.html">4. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list.html">5. Linked List</a></li>
@@ -199,6 +181,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Hashing.html">3. Hashing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Unordered_Ordered_Insert.html">4. Linked list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tugas/25-196_Moh.Ghufron_Tree.html">5. Tree</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code/3.html">3. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/4.html">4. Hashing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/5.html">5. Linked List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/6.html">6. Tree</a></li>
 </ul>
 
     </div>
@@ -344,21 +333,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Infix, Prefix, dan Postfix</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d2-konversi-infix-ke-prefix">D2. Konversi Infix ke Prefix</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-langkah-a-b-c-a-b-c">Contoh langkah: (A + B) * C → <strong>* + A B C</strong></a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-infix-ke-postfix-prefix">KONVERSI INFIX KE POSTFIX &amp; PREFIX</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-semua-soal">UJI COBA SEMUA SOAL</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">==========================================</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -431,68 +410,6 @@
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>==========================================<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="konversi-infix-ke-postfix-prefix">
-<h1>KONVERSI INFIX KE POSTFIX &amp; PREFIX<a class="headerlink" href="#konversi-infix-ke-postfix-prefix" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>==========================================<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
-<p>def infix_to_postfix(ekspresi):
-prioritas = {‘+’: 1, ‘-’: 1, ‘*’: 2, ‘/’: 2}
-stack, output = [], []</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for token in ekspresi.replace(&quot; &quot;, &quot;&quot;):
-    if token.isalpha():
-        output.append(token)
-    elif token == &#39;(&#39;:
-        stack.append(token)
-    elif token == &#39;)&#39;:
-        while stack and stack[-1] != &#39;(&#39;:
-            output.append(stack.pop())
-        stack.pop()
-    else:
-        while (stack and stack[-1] != &#39;(&#39; and
-               prioritas.get(stack[-1], 0) &gt;= prioritas.get(token, 0)):
-            output.append(stack.pop())
-        stack.append(token)
-
-while stack:
-    output.append(stack.pop())
-
-return &quot; &quot;.join(output)
-</pre></div>
-</div>
-<p>def infix_to_prefix(ekspresi):
-# Langkah 1: balik dan ganti kurung
-dibalik = ekspresi[::-1]
-ganti = “”
-for c in dibalik:
-if c == ‘(’:   ganti += ‘)’
-elif c == ‘)’: ganti += ‘(’
-else:          ganti += c</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Langkah 2: Konversi ke postfix
-postfix = infix_to_postfix(ganti)
-
-# Langkah 3: Balik hasil postfix
-return &quot; &quot;.join(postfix.split()[::-1])
-</pre></div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id3">
-<h1>==========================================<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-semua-soal">
-<h1>UJI COBA SEMUA SOAL<a class="headerlink" href="#uji-coba-semua-soal" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id4">
-<h1>==========================================<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
-<p>soal = [“A+B”, “A+B*C”, “(A+B)<em>C”, “A</em>(B+C)”, “(A-B)/(C+D)”]</p>
-<p>print(f”{‘Infix’:&lt;20} {‘Postfix’:&lt;20} {‘Prefix’}”)
-print(“-” * 55)
-for s in soal:
-print(f”{s:&lt;20} {infix_to_postfix(s):&lt;20} {infix_to_prefix(s)}”)</p>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -560,21 +477,11 @@ print(f”{s:&lt;20} {infix_to_postfix(s):&lt;20} {infix_to_prefix(s)}”)</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Infix, Prefix, dan Postfix</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d2-konversi-infix-ke-prefix">D2. Konversi Infix ke Prefix</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-langkah-a-b-c-a-b-c">Contoh langkah: (A + B) * C → <strong>* + A B C</strong></a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-infix-ke-postfix-prefix">KONVERSI INFIX KE POSTFIX &amp; PREFIX</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">==========================================</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-semua-soal">UJI COBA SEMUA SOAL</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">==========================================</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
