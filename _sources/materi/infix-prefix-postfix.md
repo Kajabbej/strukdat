@@ -1,4 +1,4 @@
-# Infix, Prefix, dan Postfix
+# 2. Infix, Prefix, dan Postfix
 ## D2. Konversi Infix ke Prefix
 
 **Cara:** Balik string → ganti kurung → konversi ke postfix → balik hasil
